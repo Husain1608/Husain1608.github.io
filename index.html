@@ -863,12 +863,6 @@ const P=[
   role:['Built custom reports from SQL views on request','Backfilled historical data from the platforms or through the data connector, including a monthly licensed-product spend report','Coordinated with engineering to set up a secure file transfer for the client'],
   logic:['Clarify exactly what’s needed','Pull it from the right view or source','Shape it to the requested format','Check totals before sending'],
   result:'Requests answered without anyone waiting for a new dashboard.'},
- {id:'py',name:'Python Export-Consolidation Tool',L:'AI in my work',tags:['Python'],g:2,st:'Next: in progress',
-  s:{},tools:{Python:2},hard:['A platform that exports only ~14 days at a time','Many files to stack and clean by hand'],
-  problem:'One ad platform exports only about two weeks of data at a time, so a monthly or historical report means stacking and cleaning many files by hand.',
-  role:['A personal project, in progress: a Python tool that stacks short-window exports and cleans them into one report-ready table','Built on made-up data, published on GitHub'],
-  logic:['Read every export in a folder','Standardise columns and types','Stack them and remove overlaps','Aggregate to the report’s level and save one clean file'],
-  result:'Next: one command instead of an afternoon of copy-paste.'},
  {id:'adv',name:'Data Connector Rationalisation',L:'Data governance',tags:['Process design','Documentation & handover','Stakeholder management'],g:2,st:'Delivered',
   s:{req:'o',build:'o',doc:'o'},tools:{SQL:2,Adverity:3},
   hard:['No governance process existed before','Every connector judged, with no rules to start from','Owner sign-off needed before removal'],
@@ -1075,7 +1069,7 @@ const SK=[
  {n:'Cross-functional collaboration',re:/cross[- ]functional|collaborat|partner with/i,ids:['etl','acc','tax'],w:'Worked across investment, platform and other account teams.'},
  {n:'Excel',re:/\bexcel\b|spreadsheet/i,ids:['fc'],w:'Built a formula from scratch that generates a 4-5-4 retail calendar.'},
  {n:'Cloud data platforms',re:/\baws\b|azure|\bgcp\b|snowflake|bigquery|databricks|cloud/i,part:true,ids:['pq'],w:'Worked on Amazon Redshift (AWS), including moving data through cloud storage (S3). No hands-on experience yet with other cloud warehouses.'},
- {n:'Python (pandas)',re:/python|pandas/i,ids:['etl','py'],w:'Cleaning, reshaping and checking data with pandas; documented every SQL and Python transformation.'},
+ {n:'Python (pandas)',re:/python|pandas/i,ids:['etl','pq'],w:'Cleaning, reshaping and checking data with pandas; documented every SQL and Python transformation.'},
  {n:'Statistics & machine learning',re:/machine learning|\bml\b|predictive|forecast|statistic|regression|a\/b|experiment|data science/i,no:true,ids:[],w:'Not a core part of my work so far. Currently learning A/B testing, segmentation and regression.'}
 ];
 const SAMPLE='Example only: Analytics Manager, media agency. Own end-to-end reporting for key clients using SQL and Tableau. Build and automate data pipelines. Ensure data quality and reconciliation across platforms. Manage stakeholders and present to senior leadership. Lead and mentor a team of analysts. Experience with Adobe Analytics and paid media. Python and statistics a plus.';
@@ -1145,8 +1139,7 @@ const HM=[
    ['A second QA check done by hand','AI compares SQL output with the dashboard: ~30 → ~5 min','rsc'],
    ['Tiered fees calculated by hand in Excel','An automated daily fee engine','fee'],
    ['A recurring BAU process eating team hours','~500 hours a year saved (team effort)','sp'],
-   ['A fiscal calendar rebuilt every year','Generated once, reused yearly','fc'],
-   ['Multi-file exports stacked by hand','A Python (pandas) tool (in progress)','py']]},extra:['me']},
+   ['A fiscal calendar rebuilt every year','Generated once, reused yearly','fc']]},extra:['me']},
  {k:'roi',h:'ROI insight',s:'ROAS',b:'Budget can follow performance',q:'Which ads are actually bringing in sales?',v:'Outcome: spend connected to results, so budget can follow performance.',l:'Spend connected to results, so budget can follow performance.',
   viz:{type:'ba',hd:['The business challenge','The business outcome'],items:[
    ['Two search campaign types, with an unclear split','ROAS, CPC and conversion by type, plus a share-of-spend scorecard','rsc'],
@@ -1272,7 +1265,7 @@ const TX={
   ['Power Automate',74,[2,3,2,0,0,0],[['fee'],['fee'],['fee'],[],[],[]]],
   ['Web analytics',74,[3,1,0,1,1,2],[['rsc','hr','inv'],['hr'],[],['hr'],['inv'],['mig','val']]],
   ['AI assistants',74,[0,0,2,2,1,3],[[],[],['pskm','etl'],['pda','fee'],['pskm'],['pskm','rsc']]],
-  ['Python (pandas)',68,[0,2,3,0,0,2],[[],['pq','py'],['etl','py'],[],[],['py']]],
+  ['Python (pandas)',68,[0,2,3,0,0,0],[[],['pq'],['etl'],[],[],[]]],
   ['APIs + S3',48,[2,2,0,0,0,0],[['fee'],['fee','pq'],[],[],[],[]]]
  ],
  md:[
@@ -1313,8 +1306,7 @@ const TXP=[
   ['Manual dashboard QA','A primed AI assistant compares the dashboard with the source and reports gaps'],
   ['Manual SQL-vs-dashboard check','AI compares SQL output with the dashboard: ~30 → ~5 min'],
   ['Fees by hand','Running month-to-date (window SUM), tiered bands (LEAST / GREATEST), LAG to daily'],
-  ['Recurring BAU process','A stored procedure in place of manual steps (team effort)'],
-  ['Multi-file exports','pandas: stack and clean short-window exports (in progress)']],p:['pskm','rsc','fee','sp','py']},
+  ['Recurring BAU process','A stored procedure in place of manual steps (team effort)']],p:['pskm','rsc','fee','sp']},
  {k:'roi',h:'Which ads are actually bringing in sales?',s:[1,0,1,1,1,0],tools:'SQL · Tableau · Web analytics',how:[
   ['Unclear campaign-type split','Campaigns tagged from naming conventions; joined to site outcomes; ROAS, CPC, CTR, CVR'],
   ['No audience view','3 social platforms unioned; placement names parsed into audience fields'],
