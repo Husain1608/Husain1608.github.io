@@ -1,0 +1,1538 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Ahmed Husain, Lead Analyst in marketing and media analytics. Eight business challenges in digital marketing, and the outcomes delivered.">
+<meta property="og:title" content="Ahmed Husain · Marketing analytics portfolio">
+<meta property="og:description" content="Eight business challenges every marketing team faces, and the outcomes delivered: spend accuracy, budget pacing, trusted reporting, automation and AI.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230969DA'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' font-weight='700' fill='white' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<title>Ahmed Husain · Marketing Analytics Portfolio</title>
+<meta name="author" content="Ahmed Husain">
+<meta name="copyright" content="© 2026 Ahmed Husain. All rights reserved.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: 1) Landing: query line, headline, three visitor doors. 2) One page per visitor: rail = the questions this visitor asks (agenda) + resume; main = each question answered with a one-line proof and the projects behind it (difficulty in words, stages in words, open for details) */
+:root{
+  --bg:#F5F3FB; --panel:#FFFFFF; --soft:#FAF9FE; --ink:#2A2346; --muted:#6E6890; --line:#E7E3F3;
+  --accent:#6A57D6; --accent-soft:#EEEAFD; --pace:#E8A33D; --pace-soft:#FDF1DE; --good:#2F9E77; --bad:#D5574A;
+  --rail:#E4DEF8; --rail-2:#D5CCF2; --rail-ink:#2A2346; --rail-muted:#6A6392;
+  --slope-g:#2F9E77; --slope-b:#2F6FD6;
+  --display:"Bricolage Grotesque","Avenir Next","Segoe UI",sans-serif;
+  --body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10142E; --panel:#181E46; --soft:#1F2654; --ink:#ECEEFC; --muted:#A6ACDA; --line:#2E356C;
+  --accent:#97A2FF; --accent-soft:#283070; --pace:#FFC94F; --pace-soft:#3D3214; --bad:#FF8A76; --good:#6BDAA8;
+  --rail:#262E66; --rail-2:#343D7D; --rail-ink:#F1F2FB; --rail-muted:#B8BDE6; --slope-g:#5FD39E; --slope-b:#6FA2FF; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10142E; --panel:#181E46; --soft:#1F2654; --ink:#ECEEFC; --muted:#A6ACDA; --line:#2E356C;
+  --accent:#97A2FF; --accent-soft:#283070; --pace:#FFC94F; --pace-soft:#3D3214; --bad:#FF8A76; --good:#6BDAA8;
+  --rail:#262E66; --rail-2:#343D7D; --rail-ink:#F1F2FB; --rail-muted:#B8BDE6; --slope-g:#5FD39E; --slope-b:#6FA2FF; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:18px}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ---------- landing ---------- */
+.landing{max-width:1000px;margin:0 auto;padding-block:clamp(12px,5vh,56px) 24px;display:flex;flex-direction:column;gap:26px}
+.query{font-family:var(--mono);font-size:clamp(15px,2vw,19px);color:var(--accent);font-weight:600}
+.query .cur{display:inline-block;width:.55em;height:1.1em;background:var(--accent);vertical-align:-.15em;margin-left:2px}
+@media (prefers-reduced-motion: no-preference){.query .cur{animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}}
+.landing h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,6vw,64px);line-height:1;letter-spacing:-.02em;margin:8px 0 0;max-width:16ch;text-wrap:balance}
+.landing .sub{color:var(--muted);font-size:16px;margin:12px 0 0;max-width:54ch}
+.who-line{display:flex;flex-wrap:wrap;gap:6px 0;font-size:13.5px;color:var(--muted)}
+.who-line span:not(:last-child)::after{content:"·";margin:0 9px;color:var(--line)}
+.doors-h{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.doors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:760px){.doors{grid-template-columns:minmax(0,1fr)}}
+.door{all:unset;cursor:pointer;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:8px;transition:border-color .15s, transform .15s}
+.door:hover{border-color:var(--accent);transform:translateY(-2px)}
+.door b{font-family:var(--display);font-size:20px;font-weight:700}
+.door span{color:var(--muted);font-size:14px}
+.door code{font-family:var(--mono);font-size:11.5px;color:var(--accent);background:var(--accent-soft);padding:6px 8px;border-radius:8px;margin-top:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ---------- visitor page ---------- */
+.shell{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:270px minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:900px){.shell{grid-template-columns:minmax(0,1fr)}}
+.rail{background:var(--rail);color:var(--rail-ink);border-radius:20px;padding:20px 16px;display:flex;flex-direction:column;gap:18px;position:sticky;top:max(18px, env(safe-area-inset-top, 0px));max-height:calc(100vh - 36px);overflow-y:auto}
+@media (max-width:900px){.rail{position:static;max-height:none}}
+.home{all:unset;cursor:pointer;font-family:var(--mono);font-weight:600;font-size:15px;color:var(--accent)}
+.where{font-family:var(--mono);font-size:12px;color:var(--rail-ink);margin-top:2px;line-height:1.5}
+.where b{color:var(--accent)}
+.change{all:unset;cursor:pointer;font-size:12px;font-weight:600;color:var(--rail-muted);text-decoration:underline;text-underline-offset:3px;margin-top:6px;display:inline-block}
+.change:hover{color:var(--accent)}
+.label{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--rail-muted);margin:0 0 8px}
+.agenda{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;counter-reset:q}
+.agenda a{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;padding:8px 9px;border-radius:10px;color:var(--rail-ink);text-decoration:none;font-size:13.5px;line-height:1.35;counter-increment:q}
+.agenda a::before{content:counter(q);width:22px;height:22px;border-radius:50%;background:var(--panel);color:var(--accent);display:grid;place-items:center;font-family:var(--mono);font-size:11px;font-weight:600}
+.agenda a:hover,.agenda a.on{background:var(--panel)}
+.agenda a.on::before{background:var(--accent);color:#fff}
+.btn{all:unset;cursor:pointer;text-align:center;padding:11px 14px;border-radius:11px;background:var(--ink);color:var(--bg);font-weight:600;font-size:14px}
+.swatches{display:flex;gap:8px;flex-wrap:wrap}
+.sw{all:unset;cursor:pointer;width:24px;height:24px;border-radius:50%;border:2px solid var(--rail-2);box-shadow:inset 0 0 0 3px var(--rail)}
+.sw[aria-pressed="true"]{border-color:var(--rail-ink)}
+
+.main{display:flex;flex-direction:column;gap:18px;min-width:0}
+.intro{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px 24px}
+.intro .q{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.intro .q b{color:var(--accent)}
+.intro h1{font-family:var(--display);font-weight:800;font-size:clamp(24px,3.2vw,34px);line-height:1.08;margin:8px 0 6px;letter-spacing:-.01em;text-wrap:balance}
+.intro p{margin:0;color:var(--muted);max-width:62ch}
+.proofs{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.proofs span{font-size:12.5px;padding:5px 11px;border-radius:999px;background:var(--pace-soft);color:var(--ink)}
+.proofs b{font-family:var(--display);font-weight:700}
+
+.qa{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px 24px;scroll-margin-top:18px}
+.qa .qn{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.qa h2{font-family:var(--display);font-weight:700;font-size:clamp(20px,2.4vw,25px);line-height:1.2;margin:6px 0 4px;text-wrap:balance}
+.qa .ans{font-size:15.5px;margin:0 0 14px}
+.qa .ans b{color:var(--good);font-weight:700}
+.cards{display:flex;flex-direction:column;gap:10px}
+.card{border:1px solid var(--line);border-radius:14px;background:var(--soft);min-width:0}
+.card-h{all:unset;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;padding:14px 16px;width:100%;box-sizing:border-box}
+.card-h:hover .open{background:var(--accent);color:#fff}
+.card .nm{font-weight:600;font-size:15.5px}
+.card .open{align-self:start;font-size:12.5px;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:4px 11px;border-radius:999px;white-space:nowrap}
+.diff{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;font-size:13px;color:var(--muted)}
+.diff .lvl{display:inline-flex;align-items:center;gap:5px;font-weight:600;color:var(--ink)}
+.diff .lvl svg{width:12px;height:12px}
+.diff .why:not(:last-child)::after{content:"·";margin-left:8px;color:var(--line)}
+.steps{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:4px}
+.step{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;padding:3px 9px 3px 6px;border-radius:999px}
+.step i{width:9px;height:9px;border-radius:50%;flex:none}
+.step.o{background:var(--accent-soft);color:var(--ink)}
+.step.o i{background:var(--accent)}
+.step.h{background:var(--pace-soft);color:var(--ink)}
+.step.h i{background:var(--pace)}
+.step.s{background:transparent;border:1px dashed var(--accent);color:var(--muted)}
+.step.s i{background:transparent;border:1.5px solid var(--accent)}
+.steps .arr{color:var(--muted);font-size:11px}
+.res{grid-column:1/-1;font-size:14px;color:var(--ink);margin:2px 0 0}
+.det{padding:0 16px 16px}
+.tabs{display:flex;flex-wrap:wrap;gap:2px;border-bottom:1px solid var(--line)}
+.tab{all:unset;cursor:pointer;padding:8px 12px;font-size:13.5px;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px}
+.tab[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
+.tbody{padding-top:12px;font-size:14.5px;max-width:72ch}
+.tbody p{margin:0 0 8px}
+.tbody .lead{font-family:var(--display);font-size:17px;font-weight:600;line-height:1.35}
+.tools{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:12px;font-size:12.5px;font-weight:600}
+.tools span{display:inline-flex;align-items:center;gap:6px}
+.bars{display:flex;gap:3px}
+.bars i{width:14px;height:6px;border-radius:3px;background:var(--line)}
+.bars i.f{background:var(--accent)}
+.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.list li{padding:9px 12px;border-radius:10px;background:var(--panel);border:1px solid var(--line);font-size:13.5px}
+.seq{counter-reset:s}
+.seq li{counter-increment:s;display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:start}
+.seq li::before{content:counter(s);width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-family:var(--mono);font-size:10.5px;font-weight:600}
+.kw{display:flex;flex-wrap:wrap;gap:6px}
+.kw span{font-size:13px;padding:6px 12px;border-radius:999px;background:var(--accent-soft);color:var(--ink);font-weight:500}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:14px}
+.facts div{padding:12px 14px;border-radius:12px;background:var(--soft);border:1px solid var(--line)}
+.facts b{display:block;font-family:var(--display);font-size:22px;font-weight:700;line-height:1.1}
+.facts span{font-size:12.5px;color:var(--muted)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.foot{font-size:12.5px;color:var(--muted);text-align:center;padding:4px 0 10px}
+
+/* fit check */
+.fit{background:var(--panel);border:1.5px solid var(--accent);border-radius:20px;padding:20px 24px;scroll-margin-top:18px}
+.fit .qn{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.fit h2{font-family:var(--display);font-weight:700;font-size:clamp(19px,2.2vw,23px);margin:6px 0 4px}
+.fit p.sub2{margin:0 0 12px;color:var(--muted);font-size:14px}
+.fit textarea{width:100%;min-height:110px;resize:vertical;font:inherit;font-size:14px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--soft);color:var(--ink)}
+.fit textarea:focus{outline:2px solid var(--accent);outline-offset:0}
+.fitbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px}
+.go{all:unset;cursor:pointer;padding:10px 18px;border-radius:999px;background:var(--accent);color:#fff;font-weight:600;font-size:14px}
+.ghost{all:unset;cursor:pointer;font-size:13px;font-weight:600;color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.score{margin:16px 0 10px;font-family:var(--display);font-size:20px;font-weight:700}
+.score b{color:var(--good)}
+.rlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.rlist li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;padding:11px 13px;border-radius:12px;border:1px solid var(--line);background:var(--soft)}
+.rlist .ic{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:13px;color:#fff}
+.rlist .yes .ic{background:var(--good)}
+.rlist .part .ic{background:var(--pace)}
+.rlist .no .ic{background:var(--muted)}
+.rlist b{display:block;font-size:14.5px}
+.rlist .why2{font-size:13.5px;color:var(--muted)}
+.pchips{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.pchip{all:unset;cursor:pointer;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.pchip:hover{background:var(--accent);color:#fff}
+.pchip.static{cursor:default}
+.empty{font-size:14px;color:var(--muted);margin-top:12px}
+
+/* snapshot */
+.hero{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:14px}
+.hero h1{max-width:22ch}
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:8px}
+@media (max-width:760px){.nums{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.nums div{padding:14px;border-radius:14px;background:var(--pace-soft)}
+.nums b{display:block;font-family:var(--display);font-size:clamp(22px,3vw,30px);font-weight:800;line-height:1.05}
+.nums span{font-size:12.5px;color:var(--muted)}
+.ctas{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:6px}
+.cta{all:unset;cursor:pointer;padding:12px 20px;border-radius:999px;background:var(--ink);color:var(--bg);font-weight:600}
+.cta2{padding:12px 18px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:600;text-decoration:none}
+.strengths{display:flex;flex-direction:column;gap:0}
+.srow{border:1px solid var(--line);background:var(--panel);border-radius:16px;margin-bottom:10px}
+.sh{all:unset;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;align-items:center;padding:16px 20px;width:100%;box-sizing:border-box}
+.sh b{font-family:var(--display);font-size:clamp(17px,2vw,20px);font-weight:700}
+.sh .one{grid-column:1;font-size:14.5px;color:var(--muted)}
+.sh .more{grid-row:1/span 2;grid-column:2;font-size:13px;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:6px 12px;border-radius:999px;white-space:nowrap}
+.sh:hover .more{background:var(--accent);color:#fff}
+.sbody{padding:0 16px 16px}
+.deeper .dlinks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:760px){.deeper .dlinks{grid-template-columns:minmax(0,1fr)}}
+.dl{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--panel)}
+.dl:hover{border-color:var(--accent)}
+.dl code{font-family:var(--mono);font-size:12px;color:var(--accent)}
+.dl span{font-size:13.5px;color:var(--muted)}
+
+/* hiring manager topics */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.tile{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:8px;padding:20px;border-radius:18px;background:var(--panel);border:1px solid var(--line);transition:border-color .15s,transform .15s}
+.tile:hover{border-color:var(--accent);transform:translateY(-2px)}
+.tile .stat{align-self:flex-start;font-family:var(--display);font-weight:800;font-size:22px;line-height:1;padding:8px 12px;border-radius:12px;background:var(--pace-soft)}
+.tile b{font-family:var(--display);font-size:19px;font-weight:700;line-height:1.2}
+.tile span.l{font-size:14px;color:var(--muted)}
+.tile span.go2{margin-top:auto;font-size:13px;font-weight:600;color:var(--accent)}
+.backt{all:unset;cursor:pointer;align-self:flex-start;font-size:13px;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:6px 12px;border-radius:999px}
+.topic{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px 24px;display:flex;flex-direction:column;gap:12px}
+.topic h1{font-family:var(--display);font-weight:800;font-size:clamp(22px,3vw,30px);line-height:1.1;margin:0}
+.topic p.l{margin:0;color:var(--muted);max-width:62ch}
+.agenda button{all:unset;cursor:pointer;display:block;width:100%;box-sizing:border-box;padding:8px 10px;border-radius:10px;font-size:13.5px;color:var(--rail-ink)}
+.agenda button:hover,.agenda button.on{background:var(--panel)}
+.agenda button.on{font-weight:600}
+
+/* hiring manager explorer: topics | projects | detail */
+.shell.hm{max-width:1400px;grid-template-columns:250px minmax(0,1fr)}
+.agenda .tbtn{all:unset;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;box-sizing:border-box;padding:10px 11px;border-radius:11px;font-size:13.5px;color:var(--rail-ink)}
+.agenda .tbtn em{font-style:normal;font-family:var(--mono);font-size:10.5px;color:var(--rail-muted);white-space:nowrap}
+.agenda .tbtn:hover{background:var(--panel)}
+.agenda .tbtn.on{background:var(--accent);color:#fff;font-weight:600}
+.agenda .tbtn.on em{color:#fff;opacity:.85}
+.agenda .fitb{margin-top:6px;border:1px dashed var(--rail-2)}
+.xp{display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px;position:sticky;top:max(18px, env(safe-area-inset-top, 0px));height:calc(100vh - 36px)}
+.col{background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow-y:auto;min-width:0}
+.plist{padding:16px;display:flex;flex-direction:column;gap:8px}
+.phead{padding:4px 4px 10px;border-bottom:1px solid var(--line);margin-bottom:4px}
+.phead .stat{display:inline-block;font-family:var(--display);font-weight:800;font-size:20px;padding:6px 10px;border-radius:10px;background:var(--pace-soft)}
+.phead h2{font-family:var(--display);font-size:19px;font-weight:700;margin:10px 0 4px;line-height:1.2}
+.phead p{margin:0;font-size:13px;color:var(--muted)}
+.pitem{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:4px;padding:12px 13px;border-radius:13px;border:1px solid var(--line);background:var(--soft)}
+.pitem:hover{border-color:var(--accent)}
+.pitem.on{background:var(--accent-soft);border-color:var(--accent);box-shadow:inset 3px 0 0 var(--accent)}
+.pitem b{font-size:14px;font-weight:600;line-height:1.3}
+.pitem .lvl{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600}
+.pitem .lvl svg{width:11px;height:11px}
+.pitem .mut{font-weight:400;color:var(--muted)}
+.pdet{padding:22px 24px;display:flex;flex-direction:column;gap:12px}
+.qline{font-family:var(--mono);font-size:12px;color:var(--muted);overflow-wrap:anywhere}
+.qline b{color:var(--accent)}
+.pdet .pt{font-family:var(--display);font-weight:800;font-size:clamp(21px,2.4vw,27px);line-height:1.15;margin:0;text-wrap:balance}
+.pdet .diff{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.pdet .diff .lvl{display:inline-flex;align-items:center;gap:5px;font-weight:700;font-size:13.5px;margin-right:4px}
+.pdet .diff .why{font-size:12.5px;padding:4px 10px;border-radius:999px;background:var(--pace-soft);color:var(--ink)}
+.pdet .diff .why::after{content:none!important}
+.pdet .steps .status{margin-left:6px}
+.ptags{display:flex;flex-wrap:wrap;gap:5px}
+.ptags span{font-size:11.5px;padding:3px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:600}
+.status{font-family:var(--mono);font-size:10.5px;padding:3px 8px;border-radius:6px;background:var(--soft);border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.xp-fit{min-width:0}
+@media (max-width:900px){.shell.hm{grid-template-columns:minmax(0,1fr)}.xp{grid-template-columns:minmax(0,1fr);position:static;height:auto}.col{overflow:visible}}
+
+/* topic pages */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.tile{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:8px;padding:20px;border-radius:18px;background:var(--panel);border:1px solid var(--line);transition:border-color .15s,transform .15s}
+.tile:hover{border-color:var(--accent);transform:translateY(-2px)}
+.tile .stat{align-self:flex-start;font-family:var(--display);font-weight:800;font-size:21px;line-height:1;padding:8px 12px;border-radius:12px;background:var(--pace-soft)}
+.tile b{font-family:var(--display);font-size:18.5px;font-weight:700;line-height:1.25}
+.tile span.l{font-size:13.5px;color:var(--muted)}
+.tile span.go2{margin-top:auto;font-size:13px;font-weight:600;color:var(--accent)}
+.backt{all:unset;cursor:pointer;font-size:13px;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:7px 13px;border-radius:999px}
+.nextt{all:unset;cursor:pointer;font-size:14px;font-weight:600;color:#fff;background:var(--accent);padding:10px 18px;border-radius:999px}
+.tnav{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.tq,.vz,.topic{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px 24px}
+.tq .qn,.topic .qn{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.tq h1{font-family:var(--display);font-weight:800;font-size:clamp(24px,3.4vw,36px);line-height:1.1;margin:0 0 8px;text-wrap:balance}
+.verdict{margin:0;font-size:17px;font-weight:600;color:var(--good)}
+.agenda .tbtn{all:unset;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;box-sizing:border-box;padding:10px 11px;border-radius:11px;font-size:13.5px;color:var(--rail-ink)}
+.agenda .tbtn em{font-style:normal;font-family:var(--mono);font-size:10.5px;color:var(--rail-muted);white-space:nowrap}
+.agenda .tbtn:hover{background:var(--panel)}
+.agenda .tbtn.on{background:var(--accent);color:#fff;font-weight:600}
+.agenda .tbtn.on em{color:#fff;opacity:.85}
+.agenda .fitb{margin-top:6px;border:1px dashed var(--rail-2)}
+/* ladder */
+.ladder{display:flex;flex-direction:column;gap:8px;position:relative}
+.rung{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 14px;border-radius:14px;border:1px dashed var(--line);background:var(--soft)}
+.rung .dot{width:16px;height:16px;border-radius:50%;border:2px solid var(--muted)}
+.rung.on{border-style:solid;border-color:var(--accent);background:var(--accent-soft)}
+.rung.on .dot{background:var(--accent);border-color:var(--accent)}
+.rung b{display:block;font-size:15px}
+.rung span{font-size:13.5px;color:var(--muted)}
+.rung em{font-style:normal;font-size:12px;font-weight:700;color:var(--good)}
+.rung em.nx{color:var(--muted)}
+/* stakeholder / team map */
+.smap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:stretch}
+.smap .hub{grid-column:2;grid-row:2;display:grid;place-items:center;border-radius:50%;aspect-ratio:1;max-width:150px;width:100%;justify-self:center;align-self:center;background:var(--accent);color:#fff;font-family:var(--display);font-size:20px;font-weight:800}
+.smap .node{padding:12px 14px;border-radius:14px;background:var(--soft);border:1px solid var(--line);display:flex;flex-direction:column;gap:3px}
+.smap .node b{font-size:14px}
+.smap .node span{font-size:12.5px;color:var(--muted)}
+.smap .nd0{grid-column:1;grid-row:1}.smap .nd1{grid-column:2;grid-row:1}.smap .nd2{grid-column:3;grid-row:1}
+.smap .nd3{grid-column:1;grid-row:3}.smap .nd4{grid-column:2;grid-row:3}.smap .nd5{grid-column:3;grid-row:3}
+.smap.n4 .nd0{grid-column:1;grid-row:1}.smap.n4 .nd1{grid-column:3;grid-row:1}.smap.n4 .nd2{grid-column:1;grid-row:3}.smap.n4 .nd3{grid-column:3;grid-row:3}
+@media (max-width:640px){.smap{grid-template-columns:minmax(0,1fr)}.smap .hub,.smap .node{grid-column:1!important;grid-row:auto!important}.smap .hub{max-width:110px;font-size:17px}}
+/* before / after */
+.ba{display:flex;flex-direction:column;gap:8px}
+.bah{display:grid;grid-template-columns:minmax(0,1fr) 30px minmax(0,1fr);font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.barow{display:grid;grid-template-columns:minmax(0,1fr) 30px minmax(0,1fr);align-items:center}
+.barow .bef{padding:11px 13px;border-radius:12px;background:var(--soft);border:1px dashed var(--line);color:var(--muted);font-size:13.5px}
+.barow .aft{padding:11px 13px;border-radius:12px;background:var(--accent-soft);border:1px solid var(--accent);font-size:13.5px;font-weight:600}
+.barow .arr{text-align:center;color:var(--accent);font-weight:700}
+/* grades */
+.grades{display:flex;flex-direction:column;gap:10px}
+.grow{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;align-items:start}
+.gl{display:flex;align-items:center;gap:6px;padding-top:8px}
+.gl svg{width:12px;height:12px}
+.gp{display:flex;flex-wrap:wrap;gap:8px}
+.gp span{display:flex;flex-direction:column;padding:9px 12px;border-radius:12px;background:var(--soft);border:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+.gp span b{font-size:13.5px;color:var(--ink)}
+@media (max-width:560px){.grow{grid-template-columns:minmax(0,1fr)}}
+
+/* mobile: slim top bar instead of the side panel */
+.mbar,.mhint{display:none}
+@media (max-width:900px){
+  .rail{display:none}
+  body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+  .mbar{display:block;position:sticky;top:env(safe-area-inset-top,0px);z-index:6;margin:-18px calc(-1 * max(16px, env(safe-area-inset-left, 0px))) 0;padding:10px max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px));background:var(--bg);border-bottom:1px solid var(--line)}
+  .mtop{display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .mhome{all:unset;cursor:pointer;font-family:var(--mono);font-weight:600;font-size:13.5px;color:var(--accent)}
+  .mact{display:flex;gap:6px}
+  .mbtn{all:unset;cursor:pointer;font-size:13px;font-weight:600;padding:7px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+  .mbtn.dark{background:var(--ink);color:var(--bg)}
+  .mmenu{display:flex;flex-direction:column;gap:2px;margin-top:10px;padding:6px;border-radius:14px;background:var(--panel);border:1px solid var(--line)}
+  .mmenu button{all:unset;cursor:pointer;padding:10px 12px;border-radius:10px;font-size:14px}
+  .mmenu button:hover{background:var(--accent-soft)}
+  .mmenu .mchg{color:var(--muted);border-top:1px solid var(--line);border-radius:0 0 10px 10px}
+  .mchips{display:flex;gap:6px;overflow-x:auto;margin-top:10px;scrollbar-width:none}
+  .mchips::-webkit-scrollbar{display:none}
+  .mchip{all:unset;cursor:pointer;flex:none;font-size:13px;font-weight:600;padding:7px 13px;border-radius:999px;background:var(--panel);border:1px solid var(--line);color:var(--ink)}
+  .mchip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .main{gap:12px;margin-top:12px}
+  .tq,.vz,.topic,.intro,.qa,.fit{padding:16px;border-radius:16px}
+  .tq h1{font-size:23px;margin-bottom:6px}
+  .verdict{font-size:15px}
+  .tq .qn{margin-bottom:4px}
+  .smap{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px}
+  .smap .hub{display:none}
+  .smap .node{grid-column:auto!important;grid-row:auto!important;padding:10px}
+  .smap .node b{font-size:13px}.smap .node span{font-size:12px}
+  .rung{padding:10px 12px;gap:10px}.rung b{font-size:14px}.rung span{font-size:12.5px}
+  .barow .bef,.barow .aft{padding:9px 10px;font-size:12.5px}
+  .mhint{display:block;margin:12px 0 0;text-align:center;font-size:13px;font-weight:600;color:var(--accent)}
+  .tile{padding:16px}
+}
+
+/* answer + proof side by side */
+.thead2{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px 24px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.thead2 .qn{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.thead2 h1{font-family:var(--display);font-weight:800;font-size:clamp(23px,3vw,32px);line-height:1.1;margin:0 0 6px;text-wrap:balance}
+.th-r{display:flex;gap:8px;flex-wrap:wrap}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start}
+.lhs,.rhs{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:18px 20px;min-width:0}
+.rhs{position:sticky;top:max(18px, env(safe-area-inset-top, 0px));max-height:calc(100vh - 36px);overflow-y:auto}
+.lh{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.tapnote{margin:12px 0 0;font-size:12.5px;color:var(--muted)}
+.mtabs{display:none}
+/* clickable visual */
+.pv{all:unset;box-sizing:border-box;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.pv:hover,.pv.sel{border-color:var(--accent)!important;box-shadow:0 0 0 2px var(--accent-soft)}
+.pv.sel{background:var(--accent-soft)!important}
+.rung{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:12px;align-items:center}
+.rung .tx{display:flex;flex-direction:column}
+.smap2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.smap2 .node{padding:12px 13px;border-radius:13px;background:var(--soft);border:1px solid var(--line);display:flex;flex-direction:column}
+.smap2 .node .tx{display:flex;flex-direction:column;gap:2px}
+.smap2 .node b{font-size:13.5px}.smap2 .node span span{font-size:12.5px;color:var(--muted)}
+.barow.pv{display:grid;grid-template-columns:minmax(0,1fr) 26px minmax(0,1fr);align-items:center;border:1px solid transparent;border-radius:13px;padding:2px}
+.bah{grid-template-columns:minmax(0,1fr) 26px minmax(0,1fr)!important}
+.gchip{display:flex;flex-direction:column;padding:9px 11px;border-radius:12px;background:var(--soft);border:1px solid var(--line);font-size:12px;color:var(--muted)}
+.gchip .tx{display:flex;flex-direction:column}
+.gchip b{font-size:13px;color:var(--ink)}
+.grow{grid-template-columns:96px minmax(0,1fr)}
+.gp .gchip .tx,.gp .gchip .tx span,.gp .gchip .tx b{display:block;padding:0;border:0;background:none;border-radius:0}
+.gp .gchip .tx span{font-size:12px;color:var(--muted);margin-top:2px}
+/* proof rows */
+.plist2{display:flex;flex-direction:column;gap:8px}
+.prow{border:1px solid var(--line);border-radius:14px;background:var(--soft);transition:border-color .15s,box-shadow .15s,background .15s}
+.prow.hl{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.prow.open{background:var(--panel);border-color:var(--accent);box-shadow:0 6px 24px rgba(42,35,70,.08)}
+.prh{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;padding:12px 14px;width:100%}
+.prh .pn{font-weight:600;font-size:14.5px;line-height:1.3}
+.prh .pc{font-size:12px;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:3px 10px;border-radius:999px;align-self:start}
+.prow.open .prh .pc{background:var(--accent);color:#fff}
+.prh .pm{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.prh .lvl{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:700}
+.prh .lvl svg{width:11px;height:11px}
+.psteps{display:flex;flex-wrap:wrap;gap:3px}
+.psteps .step{font-size:11px;padding:2px 7px 2px 5px}
+.psteps .step i{width:7px;height:7px}
+.pbody{padding:0 14px 14px}
+@media (prefers-reduced-motion:no-preference){.pbody{animation:grow .22s ease-out}@keyframes grow{from{transform:scaleY(.96);opacity:.4}to{transform:none;opacity:1}}}
+.pwhy{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.pwhy span{font-size:12px;padding:3px 9px;border-radius:999px;background:var(--pace-soft)}
+.pbody p{margin:0 0 6px;font-size:14px}
+.pbody .lead{font-family:var(--display);font-size:15.5px;font-weight:600;line-height:1.35}
+.pbody .ph{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:10px 0 4px}
+.mini{margin:0;padding-left:18px;font-size:13.5px;display:flex;flex-direction:column;gap:3px}
+.pmore{all:unset;cursor:pointer;margin-top:8px;font-size:13px;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:7px 12px;border-radius:999px}
+@media (max-width:900px){
+  .thead2{padding:16px;border-radius:16px}.th-r{display:none}
+  .mtabs{display:flex;gap:4px;padding:4px;border-radius:999px;background:var(--panel);border:1px solid var(--line)}
+  .mt{all:unset;cursor:pointer;flex:1;text-align:center;padding:9px 10px;border-radius:999px;font-size:14px;font-weight:600;color:var(--muted)}
+  .mt[aria-selected="true"]{background:var(--accent);color:#fff}
+  .split{grid-template-columns:minmax(0,1fr)}
+  .split.show-answer .rhs,.split.show-proof .lhs{display:none}
+  .lhs,.rhs{padding:14px;border-radius:16px}
+  .rhs{position:static;max-height:none}
+  .grow{grid-template-columns:minmax(0,1fr)}
+}
+
+/* focus the chosen proof card */
+.plist2 .prow{transition:opacity .35s ease,transform .35s ease,border-color .15s,box-shadow .15s,background .15s}
+.plist2.has-open .prow:not(.open){opacity:.38;transform:scale(.985)}
+.plist2.has-open .prow:not(.open):hover{opacity:.85;transform:none}
+.plist2.has-open .prow.open{transform:scale(1.01);box-shadow:0 10px 34px rgba(42,35,70,.14)}
+@media (prefers-reduced-motion:reduce){.plist2 .prow{transition:none}.plist2.has-open .prow:not(.open),.plist2.has-open .prow.open{transform:none}}
+
+/* room above and below so any chosen card can sit in the middle */
+@media (min-width:901px){
+  .rhs{position:sticky;top:14px;max-height:calc(100vh - 28px)}
+  .plist2.has-open{padding-top:28vh;padding-bottom:45vh}
+}
+
+/* chosen card at the top: no blank space */
+@media (min-width:901px){.plist2.has-open{padding-top:0;padding-bottom:0}}
+@media (prefers-reduced-motion:no-preference){.plist2.has-open .prow.open{animation:rise .35s ease-out}@keyframes rise{from{transform:translateY(18px);opacity:.5}to{transform:scale(1.01);opacity:1}}}
+.plist2.has-open .prow:not(.open):first-of-type{margin-top:0}
+/* AI ladder steps look like the other topic boxes */
+.ladder{gap:8px}
+.ladder .rung{display:flex!important;justify-content:space-between;align-items:center;gap:12px;padding:12px 13px;border-radius:13px;background:var(--soft);border:1px solid var(--line)}
+.ladder .rung.on{background:var(--soft);border-color:var(--line)}
+.ladder .rung:not(.on){border-style:dashed;color:var(--muted)}
+.ladder .rung .dot{display:none}
+.ladder .rung .tx{display:flex;flex-direction:column;gap:2px}
+.ladder .rung b{font-size:13.5px;color:var(--ink)}
+.ladder .rung:not(.on) b{color:var(--muted)}
+.ladder .rung .tx span{font-size:12.5px;color:var(--muted)}
+.ladder .rung em{font-style:normal;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.ladder .rung em.yes{background:var(--accent-soft);color:var(--accent)}
+.ladder .rung em.nx{background:transparent;border:1px dashed var(--line);color:var(--muted)}
+.ladder .rung.pv.sel{background:var(--accent-soft)}
+
+/* answer and proof as two equal panels that fill the screen */
+@media (min-width:901px){
+  .split{align-items:stretch}
+  .lhs,.rhs{position:static!important;max-height:none!important;height:100%;overflow-y:auto}
+  .lhs{display:flex;flex-direction:column}
+  .vzfill{flex:1 0 auto;display:flex;flex-direction:column}
+  .vzfill>*{flex:1 0 auto}
+  .vz-ladder .ladder{display:flex;flex-direction:column}
+  .vz-ladder .ladder .rung{flex:1;padding:16px 18px}
+  .vz-ladder .ladder .rung b{font-size:15.5px}
+  .vz-ladder .ladder .rung .tx span{font-size:13.5px}
+  .vz-map .smap2{grid-auto-rows:1fr;gap:10px}
+  .vz-map .smap2 .node{padding:18px;justify-content:center}
+  .vz-map .smap2 .node b{font-size:15.5px}
+  .vz-map .smap2 .node .tx span{font-size:13.5px}
+  .vz-ba .ba{display:flex;flex-direction:column}
+  .vz-ba .ba .barow{flex:1}
+  .vz-ba .barow .bef,.vz-ba .barow .aft{height:100%;display:flex;align-items:center;font-size:14px;padding:12px 14px}
+  .vz-grades .grades{flex:0 0 auto}
+  .tapnote{margin-top:12px;flex:none}
+}
+
+@media (min-width:901px){.vz-map .smap2.dense{gap:8px;grid-auto-rows:auto;align-content:stretch}.vz-map .smap2.dense .node{padding:10px 14px}.vz-map .smap2.dense .node b{font-size:14.5px}.vz-map .smap2.dense .node .tx span{font-size:12.5px}}
+/* technical depth: the SQL strip */
+.sqll{display:grid;grid-template-columns:1fr 1fr;gap:5px 6px;margin-bottom:8px;padding:9px 10px;border-radius:12px;background:var(--accent-soft)}
+.sqlh{grid-column:1/-1;font:700 11px/1.2 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:1px 0 2px}
+.sqlc{font-size:12px;font-weight:600;color:var(--ink);background:var(--bg,#fff);border:1px solid var(--line);padding:5px 9px;border-radius:9px;line-height:1.3}
+@media (max-width:560px){.sqll{grid-template-columns:1fr}}
+@media (min-width:901px){.vz-map .sqll{flex:none}.vz-map .sqll+.smap2.dense .node{padding:8px 12px}.vz-map .sqll+.smap2.dense .node b{font-size:14px}}
+/* odd box count: last box spans both columns */
+.smap2 .node:last-child:nth-child(odd){grid-column:1/-1}
+/* AI topic: automation first */
+.aiv{display:flex;flex-direction:column;gap:8px}
+.aih{font:700 11px/1 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.aia{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px 16px;border-radius:14px;background:var(--accent-soft);border:1px solid var(--line);text-align:left;color:var(--ink);font:inherit;cursor:pointer}
+.aia .tx{display:flex;flex-direction:column;gap:3px}
+.aia .tx b{font-size:15px}
+.aia .tx span{font-size:12.5px;color:var(--muted)}
+.aib{display:flex;align-items:baseline;gap:6px;white-space:nowrap;font-family:'Bricolage Grotesque',sans-serif}
+.aib s{font-size:14px;color:var(--muted)}
+.aib i{font-style:normal;color:var(--muted)}
+.aib strong{font-size:24px;color:var(--accent);font-weight:800}
+.aig{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.aic{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;background:var(--soft);border:1px solid var(--line);text-align:left;color:var(--ink);font:inherit}
+button.aic{cursor:pointer}
+.aic b{font-size:13.5px}
+.aic span{font-size:12px;color:var(--muted)}
+.aic.nx{border-style:dashed}.aic.nx b{color:var(--muted)}
+.aic em.nx{align-self:flex-start;font-style:normal;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:999px;border:1px dashed var(--line);color:var(--muted);margin-top:3px}
+.aia.sel,.aic.sel{outline:2px solid var(--accent);outline-offset:-1px}
+.aino{margin:2px 0 0;font-size:12.5px;color:var(--muted);font-style:italic}
+@media (max-width:560px){.aia{flex-direction:column;align-items:flex-start}.aig{grid-template-columns:1fr}}
+@media (min-width:901px){.vz-ai .aiv{flex:1 0 auto;justify-content:space-between}.vz-ai .aia{padding:14px 16px}.vz-ai .aig{grid-auto-rows:1fr}}
+
+
+/* ================= TECH LEAD: visual workspace (no rail) ================= */
+.shell.tl{grid-template-columns:minmax(0,1fr);max-width:1280px}
+.shell.tl .rail,.shell.tl .mbar{display:none!important}
+.txw{display:flex;flex-direction:column;gap:12px;min-width:0}
+.txh{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:14px 18px;display:flex;gap:10px 18px;align-items:flex-start;justify-content:space-between}
+.txsw{margin-top:10px}
+@media (max-width:600px){.txh{flex-direction:column}}
+@media (max-width:900px){.skw::before{content:'Swipe sideways for every stage →';display:block;font-size:11.5px;color:var(--muted);margin:0 0 4px}}
+.txq{font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline}
+.txq .home{font-size:13px}.txq b{color:var(--accent)}
+.txq .change{margin:0;font-size:12px;color:var(--muted)}
+.txh h1{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.4vw,27px);line-height:1.1;margin:4px 0 0;letter-spacing:-.01em}
+.txstats{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.txstats span{font-size:12px;padding:4px 10px;border-radius:999px;background:var(--pace-soft)}
+.txstats b{font-family:var(--display);font-weight:800}
+.txr{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+@media (max-width:760px){.txr{align-items:flex-start}}
+.txbtn{all:unset;cursor:pointer;font-size:13px;font-weight:600;padding:8px 13px;border-radius:10px;background:var(--ink);color:var(--bg)}
+.txsw{display:flex;gap:6px;flex-wrap:wrap}
+.txsw button{all:unset;cursor:pointer;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--panel);font-weight:600;font-size:13px}
+.txsw button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+.txstage{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:12px;min-height:440px}
+@media (max-width:900px){.txstage{grid-template-columns:minmax(0,1fr);height:auto!important}}
+.txc{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;min-width:0;min-height:0}
+.txc .ch{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.txc h2{font-family:var(--display);font-size:clamp(18px,2vw,22px);margin:0}
+.txk{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.txhint{font-size:12.5px;color:var(--muted)}
+.txi{background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;min-height:0}
+.txi h3{font-family:var(--display);font-size:19px;margin:0;line-height:1.2}
+.txi ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px;font-size:13.5px}
+.txi p{margin:0;font-size:13.5px}
+.txi .lab{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.txi .chips{display:flex;flex-wrap:wrap;gap:6px}
+.txi pre{margin:0;background:#1B1F3B;color:#E6E8FA;font-family:var(--mono);font-size:11.5px;line-height:1.55;padding:10px 12px;border-radius:10px;overflow-x:auto;white-space:pre}
+.ochip{all:unset;cursor:pointer;font-size:12.5px;font-weight:600;color:var(--accent);background:var(--panel);border:1px solid var(--line);padding:5px 10px;border-radius:9px;line-height:1.3}
+.ochip:hover{border-color:var(--accent)}
+.ochip::after{content:" ↗";opacity:.6}
+.txsvg{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;margin-top:8px}
+.txsvg svg{width:100%;height:100%;max-height:100%}
+@media (max-width:900px){.txsvg svg{height:auto}}
+.txsvg text{font-family:var(--body)}
+.tnd{cursor:pointer;outline:none}
+.tnd rect{fill:var(--soft);stroke:var(--line);stroke-width:1.5;transition:fill .15s,stroke .15s}
+.tnd:hover rect,.tnd.on rect,.tnd:focus-visible rect{fill:var(--accent-soft);stroke:var(--accent)}
+.tnd .t1{font-family:var(--display);font-weight:800;fill:var(--ink)}
+.tnd .t2{fill:var(--muted)}
+.tpipe{fill:none;stroke:var(--accent);opacity:.28}
+.tdot{fill:var(--accent)}
+.tsrcl{font-size:11.5px;fill:var(--muted)}
+.tpt{fill:var(--accent)}
+@media (prefers-reduced-motion:reduce){.tpt{display:none}}
+.skw{flex:1;min-height:0;margin-top:12px;overflow:auto}
+.skm{width:100%;border-collapse:separate;border-spacing:4px;font-size:12px;min-width:560px}
+.skm th{font-weight:600;color:var(--muted);font-size:11px;text-align:center;padding:2px}
+.skm th.r{text-align:left;color:var(--ink);font-size:12.5px;white-space:nowrap}
+.skm .tt{text-align:left}
+.skm td{height:40px;border-radius:7px;text-align:center;font-family:var(--mono);font-size:11px;font-weight:600;cursor:pointer}
+.skm td:hover,.skm td.on{outline:2px solid var(--ink);outline-offset:-1px}
+.skm td.tot{cursor:default;background:none;width:90px}.skm td.tot:hover{outline:none}
+.skm td.tot span{display:block;height:8px;border-radius:4px;background:var(--accent)}
+@media (max-height:780px) and (min-width:901px){.skm td{height:29px}.skm{border-spacing:3px}}
+.pbm tr.pr{cursor:pointer}.pbm tr.pr th.r{white-space:normal;font-size:13px;min-width:200px}
+.pbm tr.pr:hover th.r,.pbm tr.pr.on th.r{color:var(--accent)}
+.pbm tr.pr.on td{outline:2px solid var(--accent);outline-offset:-1px}
+.pbm td{cursor:pointer;font-size:14px}
+.pbm .pn{font-family:var(--mono);font-size:10.5px;color:var(--accent);margin-right:8px}
+.txi .hw{display:flex;flex-direction:column;gap:2px;padding:8px 0;border-top:1px solid var(--line)}
+.txi .hw b{font-size:13.5px}.txi .hw span{font-size:13px;color:var(--muted)}
+.k0{background:var(--soft);color:transparent}.k1{background:color-mix(in srgb,var(--accent) 22%,var(--panel));color:var(--ink)}.k2{background:color-mix(in srgb,var(--accent) 50%,var(--panel));color:#fff}.k3{background:var(--accent);color:#fff}
+.skleg{display:flex;gap:12px;align-items:center;font-size:11.5px;color:var(--muted);margin-top:6px}
+.skleg i{display:inline-block;width:14px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+
+/* project modal */
+.tlm{position:fixed;inset:0;z-index:40;background:rgba(16,18,40,.45);display:grid;place-items:center;padding:16px}
+.tlmc{background:var(--panel);color:var(--ink);border-radius:20px;width:min(760px,100%);max-height:min(88vh,860px);overflow-y:auto;padding:20px 22px;box-shadow:0 30px 80px rgba(0,0,0,.25)}
+.tlmc .mh{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.tlmc h3{font-family:var(--display);font-size:22px;margin:0;line-height:1.2}
+.tlmc .x{all:unset;cursor:pointer;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.tlmc .meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin:10px 0}
+.tlmc .meta .lvl{display:inline-flex;align-items:center;gap:5px;font-weight:600;font-size:13px}
+.tlmc .meta .lvl svg{width:12px;height:12px}
+.tlmc .hardl{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.tlmc .hardl span{font-size:12.5px;padding:4px 10px;border-radius:999px;background:var(--pace-soft)}
+
+/* ================= RECRUITER: screening page ================= */
+.rc-pg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:900px){.rc-pg{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.rc-pg{grid-template-columns:minmax(0,1fr)}}
+.rc-pc{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:5px}
+.rc-pq{font-size:12.5px;color:var(--muted);font-style:italic}
+.rc-pc b{font-family:var(--display);font-size:17px;line-height:1.2}
+.rc-pn{margin-top:auto;font-size:12px;font-weight:700;color:var(--accent)}
+:root{--rc-hero:#2A2346;--rc-hero-ink:#F4F2FF;--rc-good-soft:#E3F5EE}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--rc-hero:#0B0E24;--rc-good-soft:#173A33}}
+:root[data-theme="dark"]{--rc-hero:#0B0E24;--rc-good-soft:#173A33}
+.shell.rcp{grid-template-columns:minmax(0,1fr);max-width:1180px}.shell.rcp .rail,.shell.rcp .mbar{display:none!important}
+.rcx{display:flex;flex-direction:column;gap:14px}
+.rc-top{display:flex;flex-direction:column;align-items:flex-start;gap:8px;font-family:var(--mono);font-size:12px;color:var(--muted);padding:0 4px}
+.rc-top .home{font-size:13px}.rc-top .change{margin:0}
+/* HERO: name + live screening */
+.rc-hero{background:var(--rc-hero);color:var(--rc-hero-ink);border-radius:24px;padding:26px 28px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;position:relative;overflow:hidden}
+@media (max-width:820px){.rc-hero{grid-template-columns:minmax(0,1fr)}}
+.rc-hero .rc-q{font-family:var(--mono);font-size:12px;color:#A9A3D8}.rc-hero .rc-q b{color:#C9C0FF}
+.rc-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,7vw,78px);line-height:.95;letter-spacing:-.025em;margin:10px 0 8px}
+.rc-hero .rc-role{font-family:var(--display);font-size:clamp(18px,2.2vw,24px);font-weight:600;color:#D9D3FF;margin:0}
+.rc-hero .rc-line{color:#B7B1E0;margin:10px 0 0;max-width:52ch}
+.rc-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.rc-pills span{font-size:12.5px;padding:5px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.18);color:#EDEBFF}
+.rc-pills b{color:#fff}
+/* screening meter */
+.rc-scan{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:10px;position:relative}
+.rc-scan .rc-h{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A9A3D8;display:flex;justify-content:space-between}
+.rc-scan ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+.rc-scan li{display:flex;align-items:center;gap:9px;font-size:13.5px;color:#8F89BE;transition:color .3s}
+.rc-scan li i{width:18px;height:18px;border-radius:50%;border:1.5px solid #5D578E;display:grid;place-items:center;font-style:normal;font-size:11px;font-weight:800;color:transparent;flex:none;transition:all .3s}
+.rc-scan li.rc-ok{color:#F4F2FF}.rc-scan li.rc-ok i{background:#6BDAA8;border-color:#6BDAA8;color:#0B0E24}
+.rc-prog{height:6px;border-radius:3px;background:rgba(255,255,255,.12);overflow:hidden}.rc-prog i{display:block;height:100%;width:0;background:#6BDAA8;transition:width .4s}
+.rc-stamp{position:absolute;right:14px;bottom:30px;font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:.06em;color:#6BDAA8;border:3px solid #6BDAA8;border-radius:10px;padding:4px 12px;transform:rotate(-9deg) scale(1.6);opacity:0;transition:all .35s cubic-bezier(.2,1.6,.4,1)}
+.rc-stamp.rc-on{opacity:.95;transform:rotate(-9deg) scale(1)}
+.rc-replay{all:unset;cursor:pointer;font-size:11.5px;color:#A9A3D8;text-decoration:underline;text-underline-offset:3px;align-self:flex-start}
+/* SECTION heads */
+.rc-sh{display:flex;align-items:baseline;gap:12px;margin:8px 4px 0}
+.rc-sh .rc-n{font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:600}
+.rc-sh h2{font-family:var(--display);font-size:clamp(20px,2.4vw,26px);margin:0}
+.rc-sh p{margin:0;color:var(--muted);font-size:13.5px}
+/* CHECKLIST tiles */
+.rc-checks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:900px){.rc-checks{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.rc-checks{grid-template-columns:minmax(0,1fr)}}
+.rc-ck{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:8px;position:relative;min-width:0}
+.rc-ck .rc-qq{font-size:12.5px;color:var(--muted);font-weight:600;display:flex;justify-content:space-between;gap:8px}
+.rc-ck .rc-qq span:last-child{color:var(--good);font-weight:700}
+.rc-ck .rc-big{font-family:var(--display);font-weight:800;font-size:32px;line-height:1;letter-spacing:-.01em}
+.rc-ck .rc-big small{font-size:16px;font-weight:600;color:var(--muted);margin-left:4px}
+.rc-ck p{margin:0;font-size:13px;color:var(--muted)}
+.rc-yr{display:flex;gap:3px;height:12px}.rc-yr i{flex:1;border-radius:3px}
+.rc-yl{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:11px;color:var(--muted)}
+.rc-yl em{font-style:normal;display:inline-flex;align-items:center;gap:4px}.rc-yl em::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--c)}
+.rc-ppl{display:flex;align-items:flex-end;gap:6px}
+.rc-ppl .rc-lead{width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700;font-size:12px}
+.rc-ppl .rc-tm{width:26px;height:26px;border-radius:50%;background:var(--accent-soft);border:1.5px solid var(--accent)}
+.rc-ba{display:flex;align-items:center;gap:8px}
+.rc-ba s{font-family:var(--display);font-size:20px;color:var(--muted)}
+.rc-ba .rc-ar{color:var(--muted)}
+.rc-tags{display:flex;flex-wrap:wrap;gap:5px}
+.rc-tags span{font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.rc-orb{display:flex;gap:6px;flex-wrap:wrap}
+.rc-orb span{font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--soft)}
+/* TOOLS: gauges */
+.rc-tools{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:18px;display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:8px}
+@media (max-width:1000px){.rc-tools{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media (max-width:560px){.rc-tools{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.rc-g{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.rc-g svg{width:78px;height:78px}
+.rc-g b{font-size:13px;line-height:1.2}
+.rc-g span{font-size:11px;color:var(--muted);font-weight:600}
+.rc-g .rc-ex{color:var(--accent)}
+/* WINS */
+.rc-wins{display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:12px;align-items:stretch}
+@media (max-width:900px){.rc-wins{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.rc-wins{grid-template-columns:minmax(0,1fr)}}
+.rc-w{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden}
+.rc-w:first-child{background:var(--accent);color:#fff;border-color:var(--accent)}
+.rc-w:first-child p,.rc-w:first-child .rc-rk{color:rgba(255,255,255,.85)}
+.rc-w .rc-rk{font-family:var(--display);font-weight:800;font-size:44px;line-height:.9;color:var(--accent-soft);position:absolute;right:12px;top:8px}
+.rc-w:first-child .rc-rk{color:rgba(255,255,255,.25)}
+.rc-w .rc-tg{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.rc-w:first-child .rc-tg{color:#fff}
+.rc-w h3{font-family:var(--display);font-size:19px;margin:0;line-height:1.15;max-width:85%}
+.rc-w p{margin:0;font-size:13px;color:var(--muted)}
+.rc-w .rc-num{font-family:var(--display);font-weight:800;font-size:22px;margin-top:auto}
+/* CONTACT */
+.rc-contact{background:var(--rc-hero);color:var(--rc-hero-ink);border-radius:20px;padding:18px 22px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.rc-contact h2{font-family:var(--display);font-size:22px;margin:0}
+.rc-contact p{margin:2px 0 0;color:#B7B1E0;font-size:13.5px}
+.rc-cbtn{display:flex;flex-wrap:wrap;gap:8px}
+.rc-cbtn button,.rc-cbtn a{all:unset;cursor:pointer;color:inherit;padding:10px 15px;border-radius:11px;font-weight:600;font-size:14px;border:1px solid rgba(255,255,255,.22)}
+.rc-cbtn button.rc-p{background:#fff;color:#2A2346;border-color:#fff}
+@media (prefers-reduced-motion:reduce){.rc-stamp,.rc-scan li i,.rc-prog i{transition:none}}
+.cpy{max-width:1180px;margin:18px auto 4px;text-align:center;font-size:12px;color:var(--muted)}
+@media (min-width:901px){.vz-ba .ba.dense .barow .bef,.vz-ba .ba.dense .barow .aft{padding:7px 12px;font-size:13px}.vz-ba .ba.dense{gap:6px}}
+.tile .stat.val{font-size:15.5px;line-height:1.25;padding:7px 11px;font-family:var(--body);font-weight:700;color:var(--ink)}
+.homebtn{all:unset;cursor:pointer;font-family:var(--body);display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;background:var(--accent);color:#fff;margin-bottom:10px;align-self:flex-start}
+.homebtn:hover{filter:brightness(1.08)}
+.rc-top .homebtn{margin:0}
+.txh .homebtn{margin:0 0 8px}
+.pback{display:none}
+@media (max-width:900px){.pback{all:unset;cursor:pointer;display:block;margin-top:10px;text-align:center;padding:10px 14px;border-radius:11px;background:var(--accent);color:#fff;font-weight:600;font-size:14px}}
+.cgroup{display:flex;flex-direction:column;gap:8px}
+.cgroup.tx{align-items:flex-end;flex:none}
+@media (max-width:600px){.cgroup.tx{align-items:flex-start}}
+.clinks{display:flex;gap:6px;justify-content:center}
+.cgroup.tx .clinks{justify-content:flex-end}
+.clinks a{font-size:12px;font-weight:600;color:var(--accent);text-decoration:none;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--panel);white-space:nowrap}
+.clinks a:hover{border-color:var(--accent)}
+.mcl{padding:6px 10px}.mcl .clinks{justify-content:flex-start}
+
+/* ---------- colour palettes (chosen by the switcher; override OS dark mode) ---------- */
+:root[data-palette="ocean"]{--bg:#F3F5F8;--panel:#FFFFFF;--soft:#F7F9FB;--ink:#1F2328;--muted:#59636E;--line:#D9DFE6;--accent:#0969DA;--accent-soft:#DDF4FF;--pace:#BF8700;--pace-soft:#FFF8C5;--good:#1A7F37;--bad:#CF222E;--rail:#EAEEF2;--rail-2:#D0D7DE;--rail-ink:#1F2328;--rail-muted:#59636E;--slope-g:#1A7F37;--slope-b:#0969DA;--rc-hero:#1F2328;--rc-good-soft:#DAFBE1;color-scheme:light}
+:root[data-palette="indigo"]{--bg:#F4F5FA;--panel:#FFFFFF;--soft:#F8F9FC;--ink:#0F172A;--muted:#5B6478;--line:#E2E8F0;--accent:#4F46E5;--accent-soft:#EEF2FF;--pace:#D97706;--pace-soft:#FEF3C7;--good:#059669;--bad:#DC2626;--rail:#E8EAF6;--rail-2:#D6D9F0;--rail-ink:#0F172A;--rail-muted:#5B6478;--slope-g:#059669;--slope-b:#4F46E5;--rc-hero:#1E1B4B;--rc-good-soft:#D1FAE5;color-scheme:light}
+:root[data-palette="graphite"]{--bg:#F4F4F5;--panel:#FFFFFF;--soft:#FAFAFA;--ink:#0A0A0A;--muted:#5F5F67;--line:#E4E4E7;--accent:#18181B;--accent-soft:#EDEDEF;--pace:#A16207;--pace-soft:#FEF9C3;--good:#15803D;--bad:#B91C1C;--rail:#EBEBED;--rail-2:#DADADF;--rail-ink:#0A0A0A;--rail-muted:#5F5F67;--slope-g:#15803D;--slope-b:#2563EB;--rc-hero:#0A0A0A;--rc-good-soft:#DCFCE7;color-scheme:light}
+:root[data-palette="nord"]{--bg:#ECEFF4;--panel:#FFFFFF;--soft:#F5F7FA;--ink:#2E3440;--muted:#4C566A;--line:#D8DEE9;--accent:#5E81AC;--accent-soft:#E3EAF3;--pace:#D08770;--pace-soft:#F6E6DF;--good:#6E8F55;--bad:#BF616A;--rail:#E5E9F0;--rail-2:#D8DEE9;--rail-ink:#2E3440;--rail-muted:#4C566A;--slope-g:#6E8F55;--slope-b:#5E81AC;--rc-hero:#2E3440;--rc-good-soft:#E4EEDD;color-scheme:light}
+:root[data-palette="forest"]{--bg:#F1F6F3;--panel:#FFFFFF;--soft:#F7FBF8;--ink:#14211B;--muted:#56665E;--line:#DCE7E0;--accent:#0F766E;--accent-soft:#DDF3EE;--pace:#B45309;--pace-soft:#FDF0D5;--good:#15803D;--bad:#B91C1C;--rail:#E3EEE8;--rail-2:#CFE0D7;--rail-ink:#14211B;--rail-muted:#56665E;--slope-g:#15803D;--slope-b:#0F766E;--rc-hero:#12261F;--rc-good-soft:#DCFCE7;color-scheme:light}
+:root[data-palette="midnight"]{--bg:#0D1117;--panel:#161B22;--soft:#1C2230;--ink:#E6EDF3;--muted:#9198A1;--line:#30363D;--accent:#2F81F7;--accent-soft:#1A2B44;--pace:#E3B341;--pace-soft:#3A2F12;--good:#3FB950;--bad:#F85149;--rail:#161B22;--rail-2:#21262D;--rail-ink:#E6EDF3;--rail-muted:#9198A1;--slope-g:#3FB950;--slope-b:#58A6FF;--rc-hero:#010409;--rc-good-soft:#12331F;color-scheme:dark}
+.palw{position:fixed;right:14px;bottom:14px;z-index:30;display:flex;align-items:center;gap:6px;padding:6px 8px 6px 10px;border-radius:999px;background:var(--panel);border:1px solid var(--line);box-shadow:0 6px 20px rgba(0,0,0,.08)}
+.palw span{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:2px}
+.palw .sw{all:unset;cursor:pointer;width:16px;height:16px;border-radius:50%;border:2px solid transparent;box-shadow:0 0 0 1px var(--line);transition:transform .12s}
+.palw .sw:hover{transform:scale(1.15)}
+.palw .sw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--ink)}
+@media (max-width:600px){.palw span{display:none}.palw{right:10px;bottom:10px;padding:5px 7px}.palw .sw{width:14px;height:14px}}
+@media print{.palw{display:none}}
+</style>
+
+<!-- ============ LANDING ============ -->
+<section class="landing" id="landing">
+  <div>
+    <div class="query">SELECT * FROM ahmed;<span class="cur"></span></div>
+    <h1>Marketing analytics, explained by the person who built it.</h1>
+    <p class="sub">I believe marketing decisions are only as good as the numbers behind them. So I make every number counted once, checked against its source, and fast enough to act on.</p>
+  </div>
+  <div class="who-line"><span>Ahmed Husain</span><span>Lead Analyst, Marketing Insights</span><span>9+ years · 5 in analytics</span><span>Led a team of 3</span><span>Bangalore</span></div>
+  <div>
+    <p class="doors-h">Who's visiting?</p>
+    <div class="doors">
+      <button class="door" data-lens="hm"><b>Hiring manager</b><span>Eight business challenges, and the outcomes delivered.</span><code>WHERE visitor = 'hiring_manager'</code></button>
+      <button class="door" data-lens="tech"><b>Technical lead</b><span>How the outcomes were built: the pipeline, the SQL, the model.</span><code>WHERE visitor = 'tech_lead'</code></button>
+      <button class="door" data-lens="rec"><b>Recruiter</b><span>The 60-second screen: experience, tools, results.</span><code>WHERE visitor = 'recruiter'</code></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISITOR PAGE ============ -->
+<div class="shell" id="page" hidden>
+  <header class="mbar" id="mbar"></header>
+  <aside class="rail">
+    <div>
+      <button class="homebtn" id="homeBtn" title="Back to the home page (Esc)">← Home</button>
+      <button class="home" id="home" title="Back to start">SELECT * FROM ahmed</button>
+      <div class="where" id="where"></div>
+      <button class="change" id="change">Not you? Change visitor</button>
+    </div>
+    <div>
+      <p class="label" id="agendaLabel">Your questions</p>
+      <ol class="agenda" id="agenda"></ol>
+    </div>
+    <div class="cgroup"><button class="btn" id="resumeBtn">Get my resume (PDF)</button><div class="clinks"><a href="mailto:ahmedhusain904@gmail.com?subject=Your%20portfolio" title="ahmedhusain904@gmail.com">✉ Email</a><a href="https://www.linkedin.com/in/ahmed-husain-9b55601b5" target="_blank" rel="noopener">in LinkedIn</a></div></div>
+  </aside>
+  <main class="main" id="main"></main>
+</div>
+
+<div class="palw" role="group" aria-label="Colour theme"><span>Theme</span><button class="sw" data-pal="ocean" title="Ocean" aria-label="Ocean theme" style="background:linear-gradient(135deg,#FFFFFF 50%,#0969DA 50%)"></button><button class="sw" data-pal="indigo" title="Indigo" aria-label="Indigo theme" style="background:linear-gradient(135deg,#F4F5FA 50%,#4F46E5 50%)"></button><button class="sw" data-pal="graphite" title="Graphite" aria-label="Graphite theme" style="background:linear-gradient(135deg,#FAFAFA 50%,#18181B 50%)"></button><button class="sw" data-pal="nord" title="Nord" aria-label="Nord theme" style="background:linear-gradient(135deg,#ECEFF4 50%,#5E81AC 50%)"></button><button class="sw" data-pal="forest" title="Forest" aria-label="Forest theme" style="background:linear-gradient(135deg,#F1F6F3 50%,#0F766E 50%)"></button><button class="sw" data-pal="midnight" title="Midnight (dark)" aria-label="Midnight (dark) theme" style="background:linear-gradient(135deg,#0D1117 50%,#2F81F7 50%)"></button></div>
+<footer class="cpy">© 2026 Ahmed Husain. All rights reserved. Content, design and code on this page may not be copied or reused without permission.</footer>
+<script>
+(function(){
+const STAGES=[['req','Scoped'],['build','Built'],['qa','Tested'],['doc','Documented'],['hand','Handed over'],['maint','Ran it']];
+const GRADES={1:'Routine',2:'Moderate',3:'Hard',4:'Expert'};
+const P=[
+ {id:'rsc',name:'Search Campaign-Type Performance Reporting',L:'End-to-end ownership',tags:['AI','Requirements & scoping','SQL view build','Dashboard build','Reconciliation & QA','Documentation & handover'],g:4,st:'Delivered',
+  s:{req:'o',build:'o',qa:'o',doc:'o',maint:'o'},tools:{SQL:3,Tableau:3,'AI (Copilot)':2},
+  hard:['2 ad platforms + web analytics joined','3 markets, 2 currencies','Every metric must match exactly','A custom scorecard the client asked for'],
+  problem:'For one of the retailer’s brands, search spend was split across two campaign types (Performance Max and standard Shopping), and the client couldn’t see how each contributed to spend and site outcomes.',
+  role:['Took the business logic from stakeholders and scoped the work','Built the SQL view joining search platform and web analytics data at campaign level','Split campaigns into the two types based on their tactic','Designed a custom scorecard showing each campaign type’s share of spend, adding up to 100%, in a single tile','Built the dashboard and validated it','Wrote the QA standard operating procedure: a thrice-weekly, exact-match check with a 12-point checklist and an evidence log','Built the SQL comparison query so any analyst could run the QA','Introduced AI-assisted QA: comparing SQL output and dashboard screenshots cut each check from ~30 minutes to ~5'],
+  logic:['Tag every campaign by type from its naming convention','Combine spend, clicks and impressions from two ad platforms','Match them to site visits, orders and revenue from web analytics by day, market and campaign type','Convert non-US revenue to USD and add agency fees to spend','Calculate return on ad spend, cost per click, click-through and conversion rate','Show each campaign type’s share of spend in one scorecard','QA three times a week: every metric must match the SQL exactly, with zero tolerance'],
+  result:'One trusted view of how each search campaign type performs across three markets, checked three times a week. AI-assisted QA cut each check from about 30 minutes to 5.'},
+ {id:'aud',name:'Cross-Platform Social Audience Segmentation',L:'End-to-end ownership',tags:['SQL view build','Dashboard build'],g:3,st:'Delivered',
+  s:{req:'o',build:'o',qa:'o'},tools:{SQL:3,Tableau:2},
+  hard:['Three platforms, three schemas','Segmentation didn’t exist yet'],
+  problem:'There was no way to see social performance by audience, because the segmentation itself didn’t exist.',
+  role:['Built a view unioning ad-level data from three social platforms','Created the audience segmentation logic from scratch','Parsed placement naming into structured audience fields','Built the visuals to spec'],
+  logic:['Union three platforms into one ad-level table','Parse placement naming into audience fields','Assign each ad to a segment','Visualise by segment'],
+  result:'Audience-level reporting that wasn’t possible before.'},
+ {id:'cj',name:'Social-to-Site Conversion Dashboard Migration',L:'End-to-end ownership',tags:['Dashboard build','Reconciliation & QA','Stakeholder management'],g:3,st:'Delivered for client QA',
+  s:{req:'o',build:'o',qa:'o'},tools:{SQL:2,Tableau:3},
+  hard:['Picked up with no prior context','6 pivot tables, multiple charts and parameters','A date selector with ~30 period options','First attempt of its kind on the account'],
+  problem:'The client wasn’t happy with a plain paid social dashboard and asked for a more visual one. The team borrowed a richer design from another team, and it had to be rebuilt to run on this account’s social + web analytics data.',
+  role:['Picked it up from another team member with no prior context','Used the borrowed design as the reference: 6 pivot tables, multiple charts and parameters','Replaced the data source','Reverse-engineered the reference dashboard’s calculated fields','Rebuilt it on the social + web analytics source','Added a campaign-matching tab and QA’d it pivot by pivot','Re-tested every option in the ~30-choice date selector (last 2 weeks, last 90 days, last quarter and more)','Worked through it with the team, then supported the client’s own QA round','Delivered in about a week, including QA and formatting'],
+  logic:['Map every pivot, chart, parameter and calculated field in the reference','Rebuild each on the new source (CPC, CVR and more)','Add campaign ID matching','Reconcile backend vs. dashboard per pivot'],
+  result:'A more visual dashboard on a new data source, delivered in about a week, QA’d and ready for client sign-off.'},
+ {id:'fc',name:'Retail Fiscal Calendar Framework',L:'Pipeline automation',tags:['SQL logic','Dashboard build'],g:2,st:'Reused yearly by the team',
+  s:{req:'o',build:'o',qa:'o',hand:'h'},tools:{Excel:3,Tableau:2},
+  hard:['No existing formula to work from','4-5-4 week pattern','No missing or duplicate dates allowed'],
+  problem:'The client plans on a 4-5-4 retail fiscal calendar. Each year the team built it by hand and checked for missing dates before any reporting data could be joined to it.',
+  role:['Designed a formula from scratch that generates the full 4-5-4 fiscal calendar for any year','Loaded the output into the database','Updated the reference table that all reporting joins to','Added a fiscal vs. normal calendar switch to the dashboard date filter','Handed it to the team, who reuse it every year'],
+  logic:['Start from the fiscal year’s first day','Assign weeks to months in a 4-5-4 pattern per quarter','Map every date to its fiscal year, quarter, month and week','Check for gaps or duplicates, then load to the database'],
+  result:'A manual yearly task replaced by a reusable formula, so all reporting stays in step with how the client plans.'},
+ {id:'bp',name:'Planned vs. Actual Spend Tracking',L:'Team leadership',tags:['Technical go-to','Knowledge transfer','Troubleshooting & RCA','Reconciliation & QA','Stakeholder management'],g:3,st:'Ongoing',
+  s:{build:'o',qa:'o',doc:'o',hand:'h',maint:'o'},tools:{SQL:2,Tableau:1,Adverity:2},
+  hard:['Daily, no slack for errors','Weekly and daily levels must both match','Four brands rolled into one view'],
+  problem:'Budgets were set weekly; spend landed daily. Every morning the team needed to know whether each brand was on pace.',
+  role:['Owned one of four brands end to end, every day','Reconciled ingested data vs. dashboard at weekly and daily level','The team’s go-to for the SQL logic and fixing mismatches','Gave knowledge transfer to several team members','Worked with the US data operations team through a shared task tracker, regular calls and check-ins, raising scope, effort and open questions directly','Changed the view as needs evolved; refactored it into per-brand blocks'],
+  logic:['Weekly goals × daily split ratios = daily targets','Named files land in a folder; automation loads them','Labels cleaned so four brands roll up','Goals and actuals stacked side by side'],
+  result:'A daily, reconciled view of pace against plan, and a team that could run and fix it.'},
+ {id:'brq',name:'Spend Goal Reconciliation',L:'Troubleshooting & RCA',tags:['Knowledge transfer','Stakeholder management'],g:3,st:'Delivered',
+  s:{qa:'o',hand:'h',maint:'o'},tools:{SQL:2},
+  hard:['Cases the team couldn’t resolve'],
+  problem:'Goal numbers for one brand weren’t reconciling, including cases the team couldn’t resolve. The goals came from pacing trackers owned by the US marketing science team, who worked directly with the client.',
+  role:['Involved from start to finish; the go-to person for this brand','Worked regularly with the US marketing science team to troubleshoot and correct goals','Troubleshot the goals QA repeatedly','Passed on the knowledge to the analyst who joined later'],
+  logic:['Compare goal files vs. warehouse vs. dashboard','Isolate the step where numbers diverge','Correct and re-check'],
+  result:'Goals reconciled, and the fix knowledge passed on.'},
+ {id:'pskm',name:'Search KPI Dashboard Audit & Repair',L:'Troubleshooting & RCA',tags:['AI','Dashboard build','Reconciliation & QA','Knowledge transfer','Documentation & handover'],g:3,st:'Delivered',
+  s:{build:'o',qa:'o',doc:'o',hand:'h',maint:'o'},tools:{SQL:3,Tableau:2,'AI (Copilot)':2},
+  hard:['The client had lost trust in the numbers','Undocumented production SQL, picked up cold','~4 hours per manual QA run, cut to ~40 minutes with AI','Every tab checked against a source of truth'],
+  problem:'A paid search KPI dashboard, built over 4\u20136 months by a team on another shift, started showing incorrect numbers to the client, who lost trust in it. It came to me to QA and fix.',
+  role:['Picked it up with no prior context and worked through the undocumented SQL logic','Ran the QA for about two months alongside my other work; each run meant 3.5\u20134 hours of toggling between every dashboard tab and the source of truth','Automated the comparison with an AI assistant (enterprise Copilot): one dedicated chat, primed with the context, that compared screenshots of both dashboards and returned the QA result','Isolated discrepancies to specific segments and metrics; the production SQL was corrected','Built and delivered a new data export tab','Wrote the QA process as a knowledge-transfer document'],
+  logic:['Open the source-of-truth dashboard and the client dashboard','Compare every tab, metric by metric','Paste screenshots into a primed AI chat that knows what to compare and what to report','Trace any gap back to the SQL and fix it','Document the routine for the team'],
+  result:'Numbers the client could trust again, and an AI-assisted QA routine that cut each run from ~4 hours to ~40 minutes. I later handed it to a teammate.'},
+ {id:'sc',name:'Period-to-Date Scorecard Correction',L:'Troubleshooting & RCA',tags:['Dashboard build'],g:3,st:'Delivered in 2 days',
+  s:{build:'o',qa:'o'},tools:{Tableau:3},
+  hard:['No context on earlier versions','20–30 calculated fields to trace','2-day turnaround','One of the account’s most important dashboards'],
+  problem:'The scorecard on one of the account’s most important spend dashboards needed a formula change in every metric. An earlier version had been built by another team, with no record of what had changed.',
+  role:['Picked it up with no context on earlier versions','Traced 20–30 calculated fields back to their inputs to understand each calculation','Found the root cause: period-to-date figures were anchored to today instead of the latest date in the data','Updated every calculation, filter and chart','Delivered within a 2-day turnaround'],
+  logic:['Follow each calculated field back to its inputs','Map how the week-to-date and month-to-date figures are built','Re-anchor them to the latest available date','Apply the change across every metric, filter and chart, then re-check'],
+  result:'Every scorecard metric corrected within two days. The client later chose to keep an earlier version, for reasons unrelated to the fix.'},
+ {id:'fee',name:'Automated Agency-Fee Calculation Pipeline',L:'Pipeline automation',tags:['Power Automate','SQL logic','End-to-end ownership','Documentation & handover'],g:4,st:'Delivered',
+  s:{req:'o',build:'o',qa:'o',doc:'o'},tools:{SQL:3,'Power Automate':3,Adverity:2},
+  hard:['Outside the account’s usual toolset','API spec read from scratch, including authentication','Tiered fee bands on a running monthly total','Cumulative fees turned into daily, per-brand figures'],
+  problem:'A vendor fee was calculated by hand in Excel: tiered percentages on cumulative monthly spend, split across four brands. It didn’t scale and depended on manual work.',
+  role:['Read the vendor’s API specification to find the endpoint, parameters and authentication','Built four scheduled Power Automate flows: call the API, parse the response, convert to CSV, load into the warehouse','Rebuilt the Excel fee logic in SQL, matching it exactly','Reshaped the output to one row per brand per day and added it to the account’s spend model as its own cost','Wrote the end-to-end technical documentation'],
+  logic:['Pull each brand’s spend from the API every morning','Join the four brands by date so no day is lost','Keep a running month-to-date total that resets each month','Apply the tiered fee bands to that total (25% → 20% → 15% → 10%)','Daily fee = today’s month-to-date fee minus yesterday’s','Split each day’s fee across brands by their share of spend'],
+  result:'Fees calculated automatically every day, matching Excel exactly, and visible in the same spend model as every other cost.'},
+ {id:'pda',name:'Multi-Platform Spend Model: Maintenance & Extension',L:'Technical go-to',tags:['SQL logic','Reconciliation & QA','Team leadership'],g:4,st:'Maintained',
+  s:{build:'s',maint:'o'},tools:{SQL:3,Redshift:3},
+  hard:['Search, social, programmatic and ad-server data in one model','Spend counted once across buying platforms and the ad server','Fiscal-year currency rates and country-specific fee rules','Sole owner of keeping it running','Redesigned at a finer level: ad and creative'],
+  problem:'The account needed one model of all paid media spend across search, social, affiliate and programmatic, in US dollars, with fees, behind its reporting.',
+  role:['Part of the team that built it: it took several people and input from several teams','Took sole responsibility for maintaining the code','Added the new fee pipeline into it as its own cost line','Built the redesign: mapped every platform onto one standard schema at ad and creative level (the existing model works at placement level), with a data-availability inventory for every stream','Wrote the creative-level, de-duplicated version of the model; it was in progress at handover'],
+  logic:['Bring every platform’s spend, clicks and impressions into one shape','Tag spend that appears in both a buying platform and the ad server, and count it once','Convert currencies at fiscal-year rates','Join the campaign taxonomy and the fiscal calendar','Standardise tactics for each brand','Add ad verification, ad serving and market-specific fees'],
+  result:'One spend model behind the account’s reporting, kept running and extended as needs changed.'},
+ {id:'sp',name:'Stored Procedure Automation (team effort)',L:'Pipeline automation',tags:['SQL logic','Process design'],g:3,st:'Delivered as a team',
+  s:{build:'s'},tools:{SQL:3,Redshift:2},hard:['~500 hours of BAU work a year','A team build: everyone had to understand the logic'],
+  problem:'A recurring business-as-usual process took the team a lot of manual time.',
+  role:['Collaborated with team members to automate the process with a stored procedure','Understood the procedure end to end, so I could explain and support it'],
+  logic:['Take the manual steps the team repeated','Move them into a stored procedure in the warehouse','Let it run instead of doing it by hand'],
+  result:'About 500 hours of business-as-usual work saved a year. A team effort.'},
+ {id:'hr',name:'Hourly Web Analytics: US Eastern Time Alignment',L:'Pipeline automation',tags:['SQL logic'],g:2,st:'Delivered',
+  s:{build:'o'},tools:{SQL:2,Redshift:2},hard:['Three markets, two clocks','Hours that cross into the previous day'],
+  problem:'The team’s hourly sales view mixed markets on different clocks. Japan’s hours didn’t line up with the US day, so morning checks showed the wrong numbers.',
+  role:['The hourly view was a team build; I added the time-zone logic it was missing','Shifted Japan’s hours onto US Eastern time and moved the early hours back to the previous date'],
+  logic:['Combine today’s intraday hours with yesterday’s full day','Leave US and Canada hours as they are','Shift Japan’s hours forward to US Eastern time','Move hours that fall before midnight Eastern back one day','Convert currency and add the fiscal calendar'],
+  result:'Hourly numbers from every market on one clock, so the US morning check showed the right picture.'},
+ {id:'pq',name:'Backup Data-Load Route via Cloud Storage',L:'Pipeline automation',tags:['Troubleshooting & RCA'],g:2,st:'Used when needed',
+  s:{build:'o',qa:'o'},tools:{Redshift:2,'AWS (S3)':2},hard:['Used only when the standard connector failed','Large files that had to be filtered before loading'],
+  problem:'When the standard data connector failed, the data still had to land in the warehouse on time.',
+  role:['Moved data between the warehouse and cloud storage with bulk unload and load commands','Filtered large Parquet files before re-uploading them','Troubleshot failed loads until the data landed'],
+  logic:['Export or receive the file in cloud storage','Filter it down to what the warehouse needs','Bulk-load it into the target table','Check the load and fix any errors'],
+  result:'Reporting kept running even when the usual pipeline didn’t.'},
+ {id:'mca',name:'Media Cost Actualisation',L:'Reconciliation & QA',tags:['SQL logic'],g:3,st:'In progress at handover',
+  s:{build:'o'},tools:{SQL:3,Redshift:2},hard:['Costs bought per package, reported per placement','Different pricing rules for each buying method','Cost capped at the planned amount'],
+  problem:'Media was bought in packages, but reporting needed the actual cost of each placement.',
+  role:['Another account had already solved this; I used their method document as the reference','Built the view myself for this account'],
+  logic:['Spread each package’s planned cost across its placements by share of impressions','Price each placement by buying method: rate-based, pass-through or free','Cap cost at the planned amount','Flag where reporting runs over or under','Fall back to ad-server spend when there’s no plan'],
+  result:'Planned budgets turned into actual cost per placement, with over- and under-reporting flagged.'},
+ {id:'mig',name:'Analytics Migration Reconciliation',L:'Reconciliation & QA',tags:['SQL logic'],g:2,st:'Delivered',
+  s:{build:'o',qa:'o'},tools:{SQL:2},hard:['Two analytics tools, different field definitions','Every funnel, channel and tactic had to match'],
+  problem:'The account was moving from one web analytics reporting tool to a newer one. Before switching, the team had to be sure the new tool pulled the right fields and the numbers matched.',
+  role:['Built a SQL view comparing the two sources side by side','Compared at funnel, channel and tactic level so mismatches showed up quickly'],
+  logic:['Pull the same period from both tools','Line them up by funnel, channel and tactic','Show the difference for every row','Flag the fields that don’t match'],
+  result:'A quick check that showed which fields were right before the switch.'},
+ {id:'val',name:'Pacing Actuals Validation',L:'Reconciliation & QA',tags:['SQL logic'],g:2,st:'Delivered',
+  s:{build:'o',qa:'o'},tools:{SQL:2},hard:['Another team’s ~360-line automation to understand','~20 channel, funnel and tactic buckets, with rules that change by date'],
+  problem:'Automated pacing actuals for one brand had to be trusted before anyone reported against them.',
+  role:['Worked through another team’s ~360-line automation to understand its bucket rules','Reused that logic in my own view','Compared its actuals against the raw web analytics data, bucket by bucket'],
+  logic:['Take the bucket rules from the automation','Apply them to the raw web analytics data','Line both up by date, market and bucket','Show where they match and where they don’t'],
+  result:'Actuals checked against the raw data before they were reported.'},
+ {id:'adh',name:'Ad Hoc Reporting & Historical Backfills',L:'Stakeholder management',tags:['SQL logic','Stakeholder management'],g:1,st:'Ongoing',
+  s:{build:'o'},tools:{SQL:2,Adverity:2},hard:['Requests that don’t fit the dashboard','History pulled from the platform when no feed existed'],
+  problem:'Teams regularly needed data the dashboards didn’t show: a custom slice, a different time range, or history from before a report existed.',
+  role:['Built custom reports from SQL views on request','Backfilled historical data from the platforms or through the data connector, including a monthly licensed-product spend report','Coordinated with engineering to set up a secure file transfer for the client'],
+  logic:['Clarify exactly what’s needed','Pull it from the right view or source','Shape it to the requested format','Check totals before sending'],
+  result:'Requests answered without anyone waiting for a new dashboard.'},
+ {id:'py',name:'Python Export-Consolidation Tool',L:'AI in my work',tags:['Python'],g:2,st:'Next: in progress',
+  s:{},tools:{Python:2},hard:['A platform that exports only ~14 days at a time','Many files to stack and clean by hand'],
+  problem:'One ad platform exports only about two weeks of data at a time, so a monthly or historical report means stacking and cleaning many files by hand.',
+  role:['A personal project, in progress: a Python tool that stacks short-window exports and cleans them into one report-ready table','Built on made-up data, published on GitHub'],
+  logic:['Read every export in a folder','Standardise columns and types','Stack them and remove overlaps','Aggregate to the report’s level and save one clean file'],
+  result:'Next: one command instead of an afternoon of copy-paste.'},
+ {id:'adv',name:'Data Connector Rationalisation',L:'Data governance',tags:['Process design','Documentation & handover','Stakeholder management'],g:2,st:'Delivered',
+  s:{req:'o',build:'o',doc:'o'},tools:{SQL:2,Adverity:3},
+  hard:['No governance process existed before','Every connector judged, with no rules to start from','Owner sign-off needed before removal'],
+  problem:'The data integration platform had built up hundreds of connectors, and there was no governance process at all. Nobody could say which still fed live reporting, which were duplicates, and which could safely go.',
+  role:['Worked with the vendor to get a metadata feed listing every connector on the account','The feed only listed each connector’s name, source and creator, so I designed the audit layer on top of it','Added decision, standard reason, comment and sign-off columns: Keep / Delete / Review Required, each with its own set of reasons','Built linked drop-downs so each decision only allows valid reasons','Wrote a guide with example comments so the whole team could audit consistently','Added a sign-off step for the client-side owner before anything was removed'],
+  logic:['List every connector with its source and creator','Decide: Keep, Delete or Review Required','Pick a standard reason (e.g. active production, duplicate, replaced, test)','Owner reviews and signs off','Remove only what is approved'],
+  result:'Every connector brought under one audit process, with ~60% flagged as redundant: a leaner, auditable data stack, with every decision traceable to a reason and a sign-off.'},
+ {id:'etl',name:'ETL Transformation Playbook & Cross-Account Enablement',L:'Cross-functional collaboration',tags:['Knowledge transfer','Data governance','Documentation & handover'],g:2,st:'Delivered',
+  s:{build:'o',doc:'o',hand:'h'},tools:{Adverity:3,SQL:1},
+  hard:['No transformation documented, in SQL or Python','Each rule read and explained in plain English','Judging platform vs. SQL for every rule'],
+  problem:'The agency wanted every client account to understand what its data integration platform could do, but none of the live data transformations (the SQL and Python rules applied before data reached the warehouse) were documented.',
+  role:['Audited and documented every live transformation, in both SQL and Python, applied before data reached the warehouse','Explained each one: what it does, the exact rule, and why the business needs it','Recorded how many connectors use each one','Recommended whether each belongs in the platform or in SQL','Wrote a “How to read this” guide for non-technical readers'],
+  logic:['Pull every transformation from the platform','Classify by category, type and complexity','Explain the rule and its business purpose','Count where it is used','Recommend where it should live, and whether it can be reused'],
+  result:'The playbook became the basis of a knowledge-sharing session for all accounts across the agency.'},
+ {id:'iss',name:'Vendor Support & Issue Log',L:'Data governance',tags:['Stakeholder management'],g:2,st:'Handed over',
+  s:{req:'o',build:'o',maint:'o',hand:'h'},tools:{Adverity:2},hard:['Many connectors, many kinds of issue','Evidence clear enough for decision-makers'],
+  problem:'The account relied on a third-party data integration vendor to connect to platform APIs, but questions, outages and support outcomes weren’t tracked anywhere.',
+  role:['Started the log from scratch, then handed it over to a teammate','Kept a log of every issue or question raised with the vendor','Recorded the use case, the connector involved, the support experience and the resolution','Kept it current as new issues came up'],
+  logic:['Log each issue: connector, use case, date raised','Track the vendor’s response and support experience','Record the resolution and time taken','Share the record with decision-makers'],
+  result:'A clear record of vendor performance that decision-makers could rely on when reviewing the relationship.'},
+ {id:'tax',name:'Campaign Taxonomy Governance',L:'Process design',tags:['Team leadership','Cross-functional collaboration','Stakeholder management'],g:2,st:'Delivered',
+  s:{req:'o',build:'o',qa:'o',hand:'h',maint:'s'},tools:{SQL:1},
+  hard:['Depended on another team’s answers','No shared channel or cadence existed','Had to keep running after handover'],
+  problem:'Search and social campaigns kept arriving without a taxonomy ID, so their spend couldn’t be reported by channel, funnel or tactic. Only the media investment team could supply the missing mappings.',
+  role:['Designed the governance process for search, then social','Set up a shared chat with the investment team members','Set a twice-weekly cadence (Tuesdays and Thursdays) to share unmapped campaigns','Verified the mappings they sent back before applying them','Handed the process to a teammate and stayed their support'],
+  logic:['Pull the list of campaigns with no taxonomy ID','Share it with the investment team on the fixed cadence','They map each campaign and send it back','Verify the mapping, then apply it','Repeat until nothing is unmapped'],
+  result:'Unmapped campaigns brought to zero in both search and social, with a process that kept running after handover.'},
+ {id:'wk',name:'Weekly Leadership Status Reporting',L:'Stakeholder management',tags:['Team leadership'],g:2,st:'Ongoing',
+  s:{build:'o',maint:'o'},tools:{},hard:['Senior audience, every week','The whole account, not just my own work','Done, in progress, planned and blocked in one view'],
+  problem:'Senior leadership needed one regular view of everything the account team was delivering, and what was holding it up.',
+  role:['Wrote and sent a weekly recap email to senior stakeholders and top leadership across the agency and its analytics unit','Covered the whole account: last week’s work, this week’s, next week’s plan, and what was on hold and why','Included team availability and the status of the account’s task tracker'],
+  logic:['Collect status from every workstream and the account’s task tracker','Sort it into done, in progress, planned and on hold','Add team availability for the weeks ahead','Send on a fixed weekly cadence'],
+  result:'Every week, leadership had one view of the whole account: what shipped, what was in progress, what was blocked, and who was available.'},
+ {id:'xon',name:'Cross-Account Data Onboarding',L:'Cross-functional collaboration',tags:['Knowledge transfer','Troubleshooting & RCA'],g:2,st:'Delivered',
+  s:{build:'o',qa:'o'},tools:{Adverity:3,Redshift:2},hard:['5–6 ad platforms, each with its own dimensions and metrics','Another account’s data, not ours'],
+  problem:'Another client account needed data from 5–6 ad platforms in its warehouse. Each platform named its dimensions and metrics differently, and the team needed help getting it right.',
+  role:['Helped the account connect each platform through the data integration tool','Mapped every column to the right dimension or metric','Troubleshot the pipeline until the data landed in their warehouse'],
+  logic:['Connect each ad platform through the data integration tool','Map each platform’s columns to the right dimensions and metrics','Load the data into the account’s warehouse','Check it landed correctly and fix any gaps'],
+  result:'Data from 5–6 platforms flowing into another account’s warehouse, mapped correctly.'},
+ {id:'acc',name:'Ad Platform Access & Onboarding',L:'Cross-functional collaboration',tags:['Process design','Team leadership','Stakeholder management'],g:2,st:'Delivered',
+  s:{req:'o',build:'o',doc:'o',maint:'o'},tools:{},hard:['Stalled for 1–1.5 years before I picked it up','12 team members × every search and social platform','No process or contact list existed'],
+  problem:'Getting team members access to every search and social ad platform had been stalled for over a year. There was no process and no list of who to contact, so new joiners didn’t know where to start.',
+  role:['Picked up the stalled workstream and closed it in about 2–2.5 months','Coordinated with the access owner on each search and social platform, for 12 team members','Built the list of who to approach (and who not to) for each platform','Told the team which emails to expect from each platform and what to do with them','Turned it into an established process for anyone joining the account'],
+  logic:['List every platform and the access each role needs','Find the right access owner for each platform','Request access for each team member and track it','Share what emails to expect and the next steps','Keep the contact list current for new joiners'],
+  result:'A workstream stalled for over a year closed in about two months, and a repeatable access process for every new joiner.'},
+ {id:'rsx',name:'Warehouse Cleanup & Ownership Reviews',L:'Data governance',tags:['Process design','Stakeholder management'],g:2,st:'Ongoing',
+  s:{build:'o',maint:'o'},tools:{SQL:2,Redshift:2},hard:['Tables and views built up by many people over time','Nothing removed without its owner agreeing'],
+  problem:'Tables and views built up in the warehouse over time, and it wasn’t always clear who owned them or whether they were still needed.',
+  role:['Ran regular warehouse cleanups','Assigned each table and view to the person who created it','Reviewed each list with its owner to decide what stays and what goes'],
+  logic:['List every table and view','Match each one to the person who created it','Review the list with each owner','Remove what’s no longer needed'],
+  result:'A tidier warehouse where every object has an owner.'},
+ {id:'aud2',name:'Annual Audit Documentation',L:'Data governance',tags:['Data governance','Documentation & handover'],g:2,st:'Delivered',
+  s:{req:'o',build:'o',qa:'o',doc:'o'},tools:{},hard:['Two shifts across India and US Eastern time','No central folder existed','Every SOP had to be checked for the latest version'],
+  problem:'An annual audit required every SOP, governance document and process record to be complete and current, but documents were scattered and there was no central folder.',
+  role:['Coordinated across two shifts, India and US Eastern time','Researched which documents existed and which were missing','Made sure every process had its SQL, end-to-end documentation, SOP, governance notes, QA validation and checklist','Reviewed every SOP and kept only the latest version','Organised everything into one structured folder'],
+  logic:['List everything the audit requires','Find each document and its owner','Flag gaps and outdated versions','Keep the latest, file it in one place'],
+  result:'A complete account audit: every process documented end to end, in one place, with every SOP current.'},
+ {id:'inv',name:'Web Analytics Dashboards for Media Investment Teams',L:'Cross-functional collaboration',tags:['Dashboard build','Stakeholder management'],g:2,st:'Delivered',
+  s:{req:'o',build:'o',qa:'o'},tools:{Tableau:2,'Adobe Analytics':1},hard:['Replicating a web analytics layout exactly in Tableau','~15 brand-market combinations','4 tabs, each with its own dimensions and measures'],
+  problem:'Media investment teams needed to check web analytics regularly, and to keep their access active, but had no simple view built for them.',
+  role:['Took the layout the investment teams had defined in the web analytics platform','Replicated it in Tableau as a four-tab dashboard','Gave each tab its own dimensions and measures','Covered about 15 brand-market combinations'],
+  logic:['Agree what each investment team needs to see','Design four tabs, each focused on a different view','Cut every tab by brand and market','Give teams one place to check regularly'],
+  result:'One regular place for investment teams to check web analytics across every brand and market.'},
+ {id:'me',name:'This Portfolio: SELECT * FROM ahmed',L:'AI in my work',tags:['AI'],g:2,st:'Personal project',
+  s:{req:'o',build:'o',qa:'o',doc:'o'},tools:{},hard:['Turning 37 pieces of work into one clear story','Keeping every client detail confidential'],
+  problem:'Hiring teams have very little time, and a resume can\u2019t show how I work, what I owned, or how hard a project was.',
+  role:['Designed the structure: audiences, topics, difficulty and stages','Wrote and checked every project description for confidentiality','Built it with an AI assistant, iterating on design and content','Tested it with real readers and refined it'],
+  logic:['Group the work by what a hiring manager wants to know','Grade difficulty and show which stages I owned','Build the pages with an AI assistant','Test with real readers, then simplify'],
+  result:'A portfolio that explains my work in under a minute, with depth for anyone who wants it.'}
+];
+
+/* ---------- pages: questions per visitor ---------- */
+const PAGES={
+ hm:{q:'hiring_manager',title:'Five questions you’d ask me, answered with proof.',
+   intro:'Each answer shows the projects behind it, how hard each one was, and which stages I owned or handed over. Open any project for the detail.',
+   proofs:[['2 days','fastest cold pickup'],['0','unmapped campaigns'],['~500','connectors governed'],['30 → 5 min','QA time per check'],['12','people onboarded']],
+   qs:[
+    {h:'Can you own something end to end?',a:'<b>Yes.</b> From stakeholder requirements to SQL, dashboard, QA and the SOP others use.',p:['rsc','fee','aud']},
+    {h:'Can you pick up something cold and deliver?',a:'<b>Yes, four times.</b> The fastest took two days; one had been stalled for over a year.',p:['sc','cj','pskm','acc']},
+    {h:'Can you build processes others keep running?',a:'<b>Yes.</b> Each of these kept running after I handed it over.',p:['tax','fc','iss']},
+    {h:'Can you bring order to messy data?',a:'<b>Yes.</b> every data connector brought under governance and every transformation documented.',p:['adv','etl','aud2']},
+    {h:'Can you lead and make the team better?',a:'<b>Yes.</b> The team’s go-to person, knowledge transfer, an agency-wide session, and weekly reporting to leadership.',p:['bp','brq','wk']}
+   ]},
+ tech:{q:'tech_lead',title:'The logic, the checks, and what made it hard.',
+   intro:'Each answer starts with the hardest work. Open a project and it goes straight to how it worked.',
+   proofs:[],
+   qs:[
+    {h:'How complex was the logic you’ve handled?',a:'<b>A multi-platform spend model, a tiered fee engine, and dashboards rebuilt on new sources.</b>',p:['pda','fee','rsc','mca','hr','cj']},
+    {h:'How do you make sure the numbers are right?',a:'<b>Exact-match QA with zero tolerance,</b> and reconciliation at every step from source to dashboard, including before a tool migration.',p:['rsc','bp','brq','mig','val']},
+    {h:'Can you work in systems nobody documented?',a:'<b>Yes.</b> I traced undocumented SQL and calculations to their root cause, then documented them for others.',p:['pskm','sc','val','etl','adv']},
+    {h:'Can you automate manual work?',a:'<b>Yes.</b> An API pipeline in Power Automate, AI-assisted QA (~4 hrs → ~40 min), a team stored procedure saving ~500 hours a year, and a reusable calendar generator.',p:['fee','pskm','sp','fc']}
+   ]},
+ rec:{q:'recruiter',title:'The 60-second version.',
+   intro:'Lead Analyst in marketing insights. 9+ years of experience, 5 in analytics, 2 in digital marketing analytics at a global media agency network.',
+   proofs:[],
+   qs:[
+    {h:'What does he do?',a:'',kw:['SQL (Redshift)','Tableau','Adverity','Power Automate','Python / pandas','Excel','End-to-end ownership','Data governance','QA & reconciliation','Stakeholder management','Knowledge transfer','Process design'],
+     facts:[['9+ years','total experience'],['Led a team of 3','on a four-brand retail account'],['AM / Manager / Lead','roles he’s targeting'],['Bangalore','based in']]},
+    {h:'What’s his strongest work?',a:'Six projects, each in one line. Open any one for more.',p:['rsc','cj','pskm','adv','tax','bp']}
+   ]}
+};
+const DEF={hm:'problem',tech:'logic',rec:'summary'};
+const TABS=[['summary','Summary'],['problem','The problem'],['role','My role'],['logic','How it worked'],['result','The result']];
+
+/* ---------- helpers ---------- */
+const RESUME='files/Ahmed_Husain_Resume_2026.pdf',LINKEDIN='https://www.linkedin.com/in/ahmed-husain-9b55601b5';
+let dlP=null;try{if(window.claude&&window.claude.use)dlP=window.claude.use('downloads');}catch(e){}
+function plainResume(){const a=document.createElement('a');a.href=RESUME;a.download='Ahmed_Husain_Resume_2026.pdf';a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove();}
+async function getResume(){
+  let d=null;try{d=dlP?await dlP:null;}catch(e){d=null;}
+  if(!d)return plainResume();
+  try{const blob=await (await fetch(RESUME)).blob();await d.save({filename:'Ahmed_Husain_Resume_2026.pdf',data:blob});}
+  catch(e){if(!e||e.code!=='declined')plainResume();}
+}
+function openLinkedIn(){window.open(LINKEDIN,'_blank','noopener');}
+const $=s=>document.querySelector(s);
+const byId=id=>P.find(x=>x.id===id);
+const sym={1:'<svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="5.2" fill="var(--slope-g)"/></svg>',2:'<svg viewBox="0 0 12 12"><rect x="1" y="1" width="10" height="10" rx="1.2" fill="var(--slope-b)"/></svg>',3:'<svg viewBox="0 0 12 12"><path d="M6 .5L11.5 6 6 11.5.5 6z" fill="var(--ink)"/></svg>'};
+const slope=g=>g===4?sym[3]+sym[3]:sym[g];
+let lens='hm', openKey=null, tab=null;
+
+function steps(p){
+  const out=[];
+  STAGES.forEach(([k,w])=>{
+    const v=p.s[k]; if(!v)return;
+    if(v==='s')out.push(`<span class="step s"><i></i>Supported</span>`);
+    else if(v==='h')out.push(`<span class="step h"><i></i>${w} →</span>`);
+    else out.push(`<span class="step o"><i></i>${w}</span>`);
+  });
+  return out.join('');
+}
+function body(p,t){
+  return {
+    summary:`<p class="lead">${p.problem}</p><p><b>My role:</b> ${p.role[0]}.</p><p><b>Result:</b> ${p.result}</p>`,
+    problem:`<p class="lead">${p.problem}</p>`,
+    role:`<ul class="list">${p.role.map(r=>`<li>${r}</li>`).join('')}</ul>`,
+    logic:`<ol class="list seq">${p.logic.map(r=>`<li><span>${r}</span></li>`).join('')}</ol>`,
+    result:`<p class="lead">${p.result}</p>`
+  }[t];
+}
+function card(p,qi){
+  const key=qi+':'+p.id, o=openKey===key, t=tab||DEF[lens];
+  const tools=Object.entries(p.tools).map(([k,v])=>`<span>${k}<span class="bars">${[1,2,3].map(i=>`<i class="${i<=v?'f':''}"></i>`).join('')}</span></span>`).join('');
+  return `<div class="card" data-key="${key}">
+    <button type="button" class="card-h" aria-expanded="${o}">
+      <span class="nm">${p.name}</span><span class="open">${o?'Close':'Open'}</span>
+      <span class="diff"><span class="lvl">${slope(p.g)}${GRADES[p.g]}</span>${p.hard.slice(0,3).map(h=>`<span class="why">${h}</span>`).join('')}</span>
+      <span class="steps">${steps(p)}</span>
+      ${lens==='rec'?`<span class="res">${p.result}</span>`:''}
+    </button>
+    ${o?`<div class="det"><div class="tabs" role="tablist">${TABS.map(([k,l])=>`<button type="button" role="tab" class="tab" data-t="${k}" aria-selected="${k===t}">${l}</button>`).join('')}</div>
+      <div class="tbody" role="tabpanel">${body(p,t)}</div>${tools?`<div class="tools">${tools}</div>`:''}</div>`:''}
+  </div>`;
+}
+function render(){
+  if(lens==='hm')return renderHM();
+  if(lens==='tech')return renderTL();
+  if(lens==='rec')return renderREC();
+  $('#page').classList.remove('hm','tl','rcp');
+  const pg=PAGES[lens];
+  $('#where').innerHTML=`WHERE visitor = '<b>${pg.q}</b>';`;
+  $('#agendaLabel').textContent=lens==='rec'?'In 60 seconds':'Your questions';
+  $('#agenda').innerHTML=pg.qs.map((q,i)=>`<li><a href="#q${i}" data-i="${i}">${q.h}</a></li>`).join('');
+  $('#main').innerHTML=`<section class="intro"><div class="q">SELECT * FROM ahmed WHERE visitor = '<b>${pg.q}</b>';</div>
+      <h1>${pg.title}</h1><p>${pg.intro}</p>
+      ${pg.proofs.length?`<div class="proofs">${pg.proofs.map(([n,l])=>`<span><b>${n}</b> ${l}</span>`).join('')}</div>`:''}</section>`+
+    pg.qs.map((q,i)=>`<section class="qa" id="q${i}"><div class="qn">${lens==='rec'?'':'Question '+(i+1)}</div><h2>${q.h}</h2>${q.a?`<p class="ans">${q.a}</p>`:''}
+      ${q.kw?`<div class="kw">${q.kw.map(k=>`<span>${k}</span>`).join('')}</div>`:''}
+      ${q.facts?`<div class="facts">${q.facts.map(([b,s])=>`<div><b>${b}</b><span>${s}</span></div>`).join('')}</div>`:''}
+      ${q.p?`<div class="cards">${q.p.map(id=>card(byId(id),i)).join('')}</div>`:''}</section>`).join('')+
+    `<p class="foot">No client names, code or internal data appear on this page.</p>`;
+  document.querySelectorAll('.card-h').forEach(b=>b.onclick=()=>{const k=b.parentElement.dataset.key;openKey=openKey===k?null:k;tab=null;keep(k);});
+  document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{tab=b.dataset.t;keep(b.closest('.card').dataset.key);});
+  watch();mbar();
+}
+function keep(k){
+  const el=document.querySelector(`.card[data-key="${k}"]`);const y=el?el.getBoundingClientRect().top:0;
+  render();
+  const n=document.querySelector(`.card[data-key="${k}"]`);if(n){window.scrollBy(0,n.getBoundingClientRect().top-y);}
+}
+let obs;
+function watch(){
+  if(obs)obs.disconnect();
+  if(!('IntersectionObserver' in window))return;
+  obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const i=e.target.id==='fit'?'fit':e.target.id.slice(1);document.querySelectorAll('.agenda a').forEach(a=>a.classList.toggle('on',a.dataset.i===i));}}),{rootMargin:'-30% 0px -60% 0px'});
+  document.querySelectorAll('.qa,.fit').forEach(s=>obs.observe(s));
+}
+
+
+/* ---------- fit check ---------- */
+const SK=[
+ {n:'SQL & data modelling',re:/\bsql\b|redshift|postgres|\bquer(y|ies)\b|data model/i,ids:['pda','fee','rsc'],w:'Maintained a multi-platform spend model, built a tiered fee engine with window functions, and picked up undocumented production SQL cold.'},
+ {n:'Dashboards & BI',re:/tableau|dashboard|\bbi\b|business intelligence|visuali[sz]/i,ids:['rsc','cj','sc'],w:'Built, rebuilt and repaired Tableau dashboards end to end.'},
+ {n:'Power BI',re:/power ?bi/i,part:true,ids:['cj'],w:'My dashboard work is in Tableau. The same modelling and design skills carry over to Power BI.'},
+ {n:'ETL & data pipelines',re:/\betl\b|\belt\b|pipeline|data integration|ingest|adverity/i,ids:['fee','adv','etl'],w:'Built an API pipeline, governed every data connector, documented every SQL and Python transformation before data reached the warehouse.'},
+ {n:'Automation',re:/automat|power automate|\bapis?\b/i,ids:['fee','pskm','sp'],w:'API pipeline in Power Automate, AI-assisted QA (~4 hrs → ~40 min), and a team stored procedure saving ~500 hours a year.'},
+ {n:'Data quality & reconciliation',re:/data quality|\bqa\b|quality assurance|reconcil|accura|validat|integrity/i,ids:['rsc','bp','mig','val'],w:'Exact-match QA with zero tolerance, daily reconciliation from source to dashboard, and checks before an analytics tool migration.'},
+ {n:'Governance & documentation',re:/governance|documentation|\bsops?\b|standard operating|taxonomy|catalog/i,ids:['adv','etl','tax'],w:'Built governance processes from scratch and wrote the SOPs others run.'},
+ {n:'Stakeholder management',re:/stakeholder|client[- ]facing|communicat|present(ation|ing)?s?\b|senior leadership/i,ids:['wk','tax','acc'],w:'Weekly reporting to senior leadership; ran cadences with other teams.'},
+ {n:'Team leadership & mentoring',re:/lead(ing)? (a )?team|team lead|mentor|coach|people manag|manage (a )?team|knowledge transfer|line manag/i,ids:['bp','brq','etl'],w:'Led a team of 3; the go-to person, KT for teammates, an agency-wide session.'},
+ {n:'Process design & improvement',re:/process (design|improvement)|streamlin|efficien|optimi[sz]|continuous improvement/i,ids:['tax','acc','fc'],w:'Designed processes that kept running after handover; closed a workstream stalled for over a year.'},
+ {n:'Marketing & media analytics',re:/media|marketing|campaign|paid search|paid social|\bsem\b|\bppc\b|performance|\broas\b|attribution|ad ?tech|digital/i,ids:['rsc','bp','aud'],w:'Spend pacing, search campaign types, audience segmentation for a multi-brand retailer.'},
+ {n:'Web analytics',re:/adobe|google analytics|\bga4\b|web analytics|\bcja\b/i,ids:['rsc','mig','inv'],w:'Joined ad data with web analytics, reconciled a migration between analytics tools, and rebuilt analytics views for media teams.'},
+ {n:'Cross-functional collaboration',re:/cross[- ]functional|collaborat|partner with/i,ids:['etl','acc','tax'],w:'Worked across investment, platform and other account teams.'},
+ {n:'Excel',re:/\bexcel\b|spreadsheet/i,ids:['fc'],w:'Built a formula from scratch that generates a 4-5-4 retail calendar.'},
+ {n:'Cloud data platforms',re:/\baws\b|azure|\bgcp\b|snowflake|bigquery|databricks|cloud/i,part:true,ids:['pq'],w:'Worked on Amazon Redshift (AWS), including moving data through cloud storage (S3). No hands-on experience yet with other cloud warehouses.'},
+ {n:'Python (pandas)',re:/python|pandas/i,ids:['etl','py'],w:'Cleaning, reshaping and checking data with pandas; documented every SQL and Python transformation.'},
+ {n:'Statistics & machine learning',re:/machine learning|\bml\b|predictive|forecast|statistic|regression|a\/b|experiment|data science/i,no:true,ids:[],w:'Not a core part of my work so far. Currently learning A/B testing, segmentation and regression.'}
+];
+const SAMPLE='Example only: Analytics Manager, media agency. Own end-to-end reporting for key clients using SQL and Tableau. Build and automate data pipelines. Ensure data quality and reconciliation across platforms. Manage stakeholders and present to senior leadership. Lead and mentor a team of analysts. Experience with Adobe Analytics and paid media. Python and statistics a plus.';
+let fitText='', fitRun=false;
+function fitHTML(){
+  let res='';
+  if(fitRun){
+    const hits=SK.filter(s=>s.re.test(fitText));
+    if(!hits.length) res=`<p class="empty">I couldn’t spot specific skills in that text. Try pasting the requirements section of the job description.</p>`;
+    else{
+      const yes=hits.filter(s=>!s.part&&!s.no), part=hits.filter(s=>s.part), no=hits.filter(s=>s.no);
+      const row=(s,c,ic)=>`<li class="${c}"><span class="ic">${ic}</span><div><b>${s.n}</b><span class="why2">${s.w}</span>${s.ids.length?`<div class="pchips">${s.ids.map(id=>{const p=byId(id);if(!p)return '';const on=lens==='tech'?true:lens==='hm'?HM.some(y=>y.p.includes(id)):PAGES[lens].qs.some(q=>q.p&&q.p.includes(id));return `<button type="button" class="pchip${on?'':' static'}" data-id="${id}">${p.name}</button>`;}).join('')}</div>`:''}</div></li>`;
+      res=`<div class="score"><b>${yes.length+part.length}</b> of ${hits.length} things your role asks for have proof here${part.length?` (${part.length} partly)`:''}.</div>
+        <ul class="rlist">${yes.map(s=>row(s,'yes','✓')).join('')}${part.map(s=>row(s,'part','~')).join('')}${no.map(s=>row(s,'no','–')).join('')}</ul>`;
+    }
+  }
+  return `<section class="fit" id="fit"><div class="qn">Fit check</div><h2>Hiring for a role? Paste the job description.</h2>
+    <p class="sub2">I’ll match what it asks for against the proof on this page, and say plainly where I’m still growing.</p>
+    <label for="jd" class="sr">Job description</label><textarea id="jd" placeholder="Paste the job description or its requirements here">${fitText.replace(/</g,'&lt;')}</textarea>
+    <div class="fitbar"><button type="button" class="go" id="fitGo">Check my fit</button><button type="button" class="ghost" id="fitSample">Try an example</button>${fitRun?'<button type="button" class="ghost" id="fitClear">Clear</button>':''}</div>${res}</section>`;
+}
+function bindFit(){
+  const go=()=>{fitText=$('#jd').value.trim();fitRun=!!fitText;render();const f=$('#fit');if(f)f.scrollIntoView({block:'start'});};
+  $('#fitGo').onclick=go;
+  $('#fitSample').onclick=()=>{$('#jd').value=SAMPLE;go();};
+  if($('#fitClear'))$('#fitClear').onclick=()=>{fitText='';fitRun=false;render();};
+  document.querySelectorAll('.pchip:not(.static)').forEach(b=>b.onclick=()=>{
+    const id=b.dataset.id;
+    if(lens==='tech'){tlModal=id;tlMTab='logic';renderTL();const x=$('#tlx');if(x)x.focus();return;}
+    if(lens==='hm'){const x=HM.find(y=>y.p.includes(id));if(!x)return;hmView=x.k;openProof=id;proofMore=false;mobTab='proof';render();window.scrollTo(0,0);return;}
+    const i=PAGES[lens].qs.findIndex(q=>q.p&&q.p.includes(id));if(i<0)return;
+    openKey=i+':'+id;tab=null;render();const c=document.querySelector(`.card[data-key="${openKey}"]`);if(c)c.scrollIntoView({block:'center',behavior:'smooth'});
+  });
+}
+
+
+/* ---------- hiring manager: topic pages (answer + proof side by side) ---------- */
+const HM=[
+ {k:'dup',h:'Spend counted correctly',s:'True spend',b:'Budgets and ROAS built on true spend',q:'How much did we really spend on ads, and on which platform?',v:'Outcome: one accurate spend total across every platform.',l:'One accurate spend total across every platform.',
+  viz:{type:'ba',hd:['The business challenge','The business outcome'],items:[
+   ['The same impression counted in the buying platform and the ad server','Counted once, with its source tagged','pda'],
+   ['Every platform naming things differently','One schema for all of them','pda'],
+   ['Non-US spend in other currencies','Comparable US dollars at fiscal-year rates','hr'],
+   ['Media bought in packages, with no cost per placement','True cost per placement, capped at plan','mca'],
+   ['Campaigns not mapped to a brand or channel','Zero unmapped: every dollar attributed','tax']]}},
+ {k:'pace',h:'Budget pacing',s:'Daily',b:'Overspend caught in days, not at month-end',q:'Are we overspending our ad budget, and will we know in time to fix it?',v:'Outcome: overspend caught daily, while it can still be fixed.',l:'Overspend caught daily, while it can still be fixed.',
+  viz:{type:'ba',hd:['The business challenge','The business outcome'],items:[
+   ['Weekly goals, but daily spend','Plan vs. actual every day, by brand','bp'],
+   ['Spend goals that wouldn’t reconcile','Traced, fixed, and the fix handed over','brq'],
+   ['Calendar months vs. the retailer’s fiscal weeks','Reporting on the 4-5-4 fiscal calendar, every year','fc'],
+   ['Automated actuals nobody had checked','Validated before anyone reported them','val']]}},
+ {k:'trust',h:'Trusted reporting',s:'Trust',b:'Client trust in reporting restored',q:'Can we trust the numbers in our reports?',v:'Outcome: errors fixed, trust restored, QA in place.',l:'Errors fixed, trust restored, QA in place.',
+  viz:{type:'ba',hd:['The business challenge','The business outcome'],items:[
+   ['The client lost trust in a KPI dashboard','Errors traced in undocumented live SQL and fixed','pskm'],
+   ['A key scorecard showed the wrong figures','Fixed within 2 days','sc'],
+   ['No standard way to check the numbers','Exact-match QA, three times a week','rsc'],
+   ['A switch of analytics tools risked broken numbers','The right fields confirmed before the switch','mig']]}},
+ {k:'fast',h:'Faster reporting',s:'Hourly',b:'Same-day decisions on near-live data',q:'How quickly can we see what’s happening, and react?',v:'Outcome: reporting closer to live, and it keeps running.',l:'Reporting closer to live, and it keeps running.',
+  viz:{type:'ba',hd:['The business challenge','The business outcome'],items:[
+   ['Daily-only data, on mixed clocks','Hourly view, every market on one clock','hr'],
+   ['Vendor data downloaded by hand','Arrives automatically every morning, via API','fee'],
+   ['A broken connector stops the reporting','A backup route keeps it running','pq'],
+   ['One-off data requests waiting for new dashboards','Custom pulls and backfills, turned around fast','adh']]}},
+ {k:'ai',h:'Automation & AI',s:'~4 hrs → ~40 min',b:'Analyst hours freed: ~4 hrs → ~40 min',q:'How much of our analysts’ time goes on repetitive manual work?',v:'Outcome: repetitive work automated with AI, APIs and SQL.',l:'Repetitive work automated with AI, APIs and SQL.',
+  viz:{type:'ba',hd:['The business challenge','The business outcome'],items:[
+   ['Hours of manual dashboard checking','AI-assisted QA: ~4 hrs → ~40 min per run','pskm'],
+   ['A second QA check done by hand','AI compares SQL output with the dashboard: ~30 → ~5 min','rsc'],
+   ['Tiered fees calculated by hand in Excel','An automated daily fee engine','fee'],
+   ['A recurring BAU process eating team hours','~500 hours a year saved (team effort)','sp'],
+   ['A fiscal calendar rebuilt every year','Generated once, reused yearly','fc'],
+   ['Multi-file exports stacked by hand','A Python (pandas) tool (in progress)','py']]},extra:['me']},
+ {k:'roi',h:'ROI insight',s:'ROAS',b:'Budget can follow performance',q:'Which ads are actually bringing in sales?',v:'Outcome: spend connected to results, so budget can follow performance.',l:'Spend connected to results, so budget can follow performance.',
+  viz:{type:'ba',hd:['The business challenge','The business outcome'],items:[
+   ['Two search campaign types, with an unclear split','ROAS, CPC and conversion by type, plus a share-of-spend scorecard','rsc'],
+   ['No view of social performance by audience','Audience segmentation across 3 platforms','aud'],
+   ['Social spend not linked to site results','A conversion dashboard rebuilt on a new source','cj'],
+   ['Investment teams without site data in their tools','Web analytics views rebuilt in Tableau','inv']]}},
+ {k:'gov',h:'Data governance',s:'~60% cut',b:'Cost and risk cut: ~60% of data feeds were redundant',q:'Is our data organised, owned and safe to grow?',v:'Outcome: governed, documented and audit-ready.',l:'Governed, documented and audit-ready.',
+  viz:{type:'ba',hd:['The business challenge','The business outcome'],items:[
+   ['Data connectors piling up with no rules','~60% flagged as redundant, with owner sign-off','adv'],
+   ['SQL and Python transformations nobody had documented','A playbook used agency-wide','etl'],
+   ['Warehouse tables and views nobody owned','Every object has an owner','rsx'],
+   ['Vendor issues untracked','One log: issue, response, resolution','iss'],
+   ['Audit documents scattered across two shifts','Every process audit-ready','aud2'],
+   ['Another account struggling to connect platforms','5–6 platforms connected and mapped','xon']]}},
+ {k:'team',h:'Team & stakeholders',s:'12 unblocked',b:'New joiners productive in weeks, not years',q:'How fast can a new team member start contributing?',v:'Outcome: teams unblocked, and running without a bottleneck.',l:'Teams unblocked, and running without a bottleneck.',
+  viz:{type:'ba',hd:['The business challenge','The business outcome'],items:[
+   ['New joiners waiting 1.5 years for platform access','Closed in ~2 months for 12 people','acc'],
+   ['Knowledge sitting with one person','KT, SOPs and handovers, so the team runs it','pskm'],
+   ['Leadership without one view of the account','A weekly status of the whole account','wk'],
+   ['US teams and the client needing one reliable contact','A regular cadence with US data and marketing science teams','brq'],
+   ['A business-critical spend model needing an owner','Sole maintainer, plus a redesign','pda']]},extra:['bp']}
+];
+HM.forEach(x=>{const z=x.viz;x.p=[...new Set((z.type==='grades'?z.ids:(z.auto||[]).map(i=>i[4]).concat(z.items.map(i=>i[2])).filter(Boolean)).concat(x.extra||[]))];});
+let fromRow=null,hmView=null,openProof=null,proofMore=false,proofTab='problem',mobTab='answer';
+const GL={4:'Expert',3:'Hard',2:'Moderate',1:'Routine'};
+const pb=(id,inner,cls)=>id?`<button type="button" class="${cls} pv${openProof===id?' sel':''}" data-pid="${id}">${inner}</button>`:`<div class="${cls}">${inner}</div>`;
+function viz(x){
+  const z=x.viz;
+  if(z.type==='ladder')return `<div class="ladder">${z.items.map(([n,w,id,on])=>pb(id,`<span class="tx"><b>${n}</b><span>${w}</span></span>${on?'<em class="yes">Yes</em>':'<em class="nx">Next</em>'}`,'rung'+(on?' on':''))).join('')}</div>`;
+  if(z.type==='ai')return `<div class="aiv"><div class="aih">Automating QA with AI</div>${z.auto.map(([n,w,a,b,id])=>pb(id,`<span class="tx"><b>${n}</b><span>${w}</span></span><span class="aib"><s>${a}</s><i>→</i><strong>${b}</strong></span>`,'aia')).join('')}<div class="aih">Also</div><div class="aig">${z.items.map(([n,w,id,on])=>pb(id,`<b>${n}</b><span>${w}</span>`,'aic'+(on?'':' nx'))).join('')}</div><p class="aino">${z.note}</p></div>`;
+  if(z.type==='map')return `${z.lead?`<div class="sqll"><span class="sqlh">${z.leadH||'The SQL behind it'}</span>${z.lead.map(s=>`<span class="sqlc">${s}</span>`).join('')}</div>`:''}<div class="smap2${z.items.length>6?' dense':''}">${z.items.map(([n,w,id])=>pb(id,`<span class="tx"><b>${n}</b><span>${w}</span></span>`,'node')).join('')}</div>`;
+  if(z.type==='ba')return `<div class="ba${z.items.length>4?' dense':''}"><div class="bah"><span>${(z.hd||['Before'])[0]}</span><span></span><span>${(z.hd||[,'After'])[1]}</span></div>${z.items.map(([a,b,id])=>pb(id,`<span class="bef">${a}</span><span class="arr">→</span><span class="aft">${b}</span>`,'barow')).join('')}</div>`;
+  if(z.type==='grades'){const by=[4,3,2].map(g=>[g,z.ids.map(byId).filter(p=>p.g===g)]).filter(([g,l])=>l.length);
+    return `<div class="grades">${by.map(([g,l])=>`<div class="grow"><div class="gl">${slope(g)}<b>${GL[g]}</b></div><div class="gp">${l.map(p=>pb(p.id,`<span class="tx"><b>${p.name}</b><span>${p.hard[0]}</span></span>`,'gchip')).join('')}</div></div>`).join('')}</div>`;}
+  return '';
+}
+function proofRow(p){
+  const o=openProof===p.id;
+  const short=`<p class="lead">${p.problem}</p><p class="ph">My role</p><ul class="mini">${p.role.slice(0,3).map(r=>`<li>${r}</li>`).join('')}</ul><p class="ph">Result</p><p>${p.result}</p>`;
+  const more=`<div class="tabs" role="tablist">${TABS.filter(([k])=>k!=='summary').map(([k,l])=>`<button type="button" role="tab" class="tab ptab" data-t="${k}" aria-selected="${k===proofTab}">${l}</button>`).join('')}</div><div class="tbody">${body(p,proofTab)}</div>`;
+  return `<div class="prow${o?' open':''}" data-pid="${p.id}">
+    <button type="button" class="prh" aria-expanded="${o}"><span class="pn">${p.name}</span><span class="pc">${o?'Close':'Open'}</span>
+      <span class="pm"><span class="lvl">${slope(p.g)}${GRADES[p.g]}</span><span class="psteps">${steps(p)}</span></span></button>
+    ${o?`<div class="pbody"><div class="pwhy">${p.hard.map(h=>`<span>${h}</span>`).join('')}</div>${proofMore?more:short}<button type="button" class="pmore">${proofMore?'← Short version':'More detail →'}</button><button type="button" class="pback">← Back to the outcomes</button></div>`:''}
+  </div>`;
+}
+function fitSplit(){
+  const sp=document.querySelector('.split');if(!sp)return;
+  if(window.innerWidth<=900){sp.style.height='';return;}
+  const top=sp.getBoundingClientRect().top+window.scrollY;
+  sp.style.height=Math.max(460,window.innerHeight-top-18)+'px';
+}
+window.addEventListener('resize',()=>{if(lens==='hm')fitSplit();});
+function renderHM(){
+  $('#page').classList.remove('hm','tl','rcp');
+  $('#where').innerHTML=`WHERE visitor = '<b>hiring_manager</b>';`;
+  $('#agendaLabel').textContent='Topics';
+  $('#agenda').innerHTML=`<li><button type="button" class="tbtn${!hmView?' on':''}" data-v=""><span>All topics</span><em></em></button></li>`+HM.map(y=>`<li><button type="button" class="tbtn${hmView===y.k?' on':''}" data-v="${y.k}"><span>${y.h}</span><em>${y.s}</em></button></li>`).join('');
+  const keepTop=(document.querySelector('.rhs')||{}).scrollTop||0;
+  let html='';
+  if(!hmView){
+    html=`<section class="intro"><div class="q">SELECT * FROM ahmed WHERE visitor = '<b>hiring_manager</b>';</div><h1>Eight questions every marketing business asks, and the outcomes delivered.</h1><p>Each one opens the business challenges underneath, the outcome for each, and the work behind it.</p></section>
+      <div class="tiles">${HM.map(x=>`<button type="button" class="tile" data-v="${x.k}"><span class="stat${x.b?' val':''}">${x.b||x.s}</span><b>“${x.q}”</b><span class="l">${x.l}</span><span class="go2">See the outcomes →</span></button>`).join('')}</div>`;
+  } else if(hmView==='fit'){
+    html=`<button type="button" class="backt" data-v="">← All topics</button>`+fitHTML();
+  } else {
+    const i=HM.findIndex(y=>y.k===hmView),x=HM[i],nx=HM[(i+1)%HM.length];
+    html=`<section class="thead2"><div class="th-l"><div class="qn">Topic ${i+1} of ${HM.length} · ${x.h}</div><h1>“${x.q}”</h1><p class="verdict">${x.v}</p></div>
+        <div class="th-r"><button type="button" class="backt" data-v="">← All topics</button><button type="button" class="nextt" data-v="${nx.k}">Next: ${nx.h} →</button></div></section>
+      <div class="mtabs" role="tablist"><button type="button" role="tab" class="mt" data-mt="answer" aria-selected="${mobTab==='answer'}">Outcomes</button><button type="button" role="tab" class="mt" data-mt="proof" aria-selected="${mobTab==='proof'}">The work · ${x.p.length}</button></div>
+      <div class="split show-${mobTab}">
+        <section class="lhs"><div class="lh">Challenges &amp; outcomes</div><div class="vzfill vz-${x.viz.type}">${viz(x)}</div><p class="tapnote">Tap an outcome to see the work behind it.</p></section>
+        <section class="rhs"><div class="lh">Behind the outcome · ${x.p.length} project${x.p.length>1?'s':''}</div><div class="plist2${openProof?' has-open':''}">${(openProof&&x.p.includes(openProof)?[openProof,...x.p.filter(z=>z!==openProof)]:x.p).map(id=>proofRow(byId(id))).join('')}</div></section>
+      </div>`;
+  }
+  $('#main').innerHTML=html;
+  const r=document.querySelector('.rhs');if(r)r.scrollTop=keepTop;
+  document.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{hmView=b.dataset.v||null;openProof=null;fromRow=null;proofMore=false;mobTab='answer';render();window.scrollTo(0,0);});
+  const showCard=id=>{const c=document.querySelector(`.prow[data-pid="${id}"]`),rh=document.querySelector('.rhs');if(!c||!rh)return;
+    if(window.innerWidth>900){if(window.scrollY>4)window.scrollTo({top:0,behavior:'smooth'});rh.scrollTo({top:0,behavior:'smooth'});}
+    else{const m=document.getElementById('mbar'),off=(m&&m.offsetHeight)||0;window.scrollTo({top:c.getBoundingClientRect().top+window.scrollY-off-12,behavior:'smooth'});}};
+  document.querySelectorAll('.pv').forEach(b=>{
+    const id=b.dataset.pid;
+    b.onclick=()=>{openProof=id;fromRow=id;proofMore=false;proofTab='problem';mobTab='proof';render();showCard(id);};
+    b.onmouseenter=()=>{const c=document.querySelector(`.prow[data-pid="${id}"]`);if(c)c.classList.add('hl');};
+    b.onmouseleave=()=>{document.querySelectorAll('.prow.hl').forEach(c=>c.classList.remove('hl'));};
+  });
+  const backToRows=id=>{openProof=null;proofMore=false;mobTab='answer';render();
+    const r=document.querySelector(`.lhs .pv[data-pid="${fromRow||id}"]`);fromRow=null;
+    if(r){const m=document.getElementById('mbar'),off=(m&&m.offsetHeight)||0;window.scrollTo({top:r.getBoundingClientRect().top+window.scrollY-off-70,behavior:'smooth'});}};
+  const mobile=()=>window.innerWidth<=900;
+  document.querySelectorAll('.prh').forEach(b=>b.onclick=()=>{const id=b.parentElement.dataset.pid;
+    if(openProof===id&&mobile()&&fromRow)return backToRows(id);
+    openProof=openProof===id?null:id;proofMore=false;proofTab='problem';render();if(openProof)showCard(id);});
+  document.querySelectorAll('.pback').forEach(b=>b.onclick=()=>backToRows(b.closest('.prow').dataset.pid));
+  document.querySelectorAll('.pmore').forEach(b=>b.onclick=()=>{proofMore=!proofMore;render();});
+  document.querySelectorAll('.ptab').forEach(b=>b.onclick=()=>{proofTab=b.dataset.t;render();});
+  document.querySelectorAll('.mt').forEach(b=>b.onclick=()=>{mobTab=b.dataset.mt;render();});
+  if(hmView==='fit')bindFit();
+  fitSplit();
+  mbar();
+}
+
+
+/* ================= TECH LEAD: visual workspace ================= */
+const TX={
+ stats:[['Every','platform, spend counted once'],['Daily','pacing vs. plan'],['Every','transformation documented'],['~4 hrs → ~40 min','QA with AI']],
+ modes:[['probs','1 · The 8 challenges'],['pipe','2 · Live pipeline'],['skills','3 · Skills map'],['model','4 · Inside the model']],
+ st:[
+  {k:'ing',x:250,h:'Ingest',s:'Adverity · Power Automate · S3',w:4,t:'Ingest: what I did',d:['Governed every data connector (keep / delete / review); ~60% flagged as redundant','Built scheduled API flows in Power Automate: call, parse, convert, load','Backup loads through cloud storage when a connector failed','Connected 5–6 platforms for another account'],p:['adv','fee','pq','xon']},
+  {k:'tr',x:410,h:'Transform',s:'every rule · mapping',w:4,t:'Transform: what I did',d:['Documented every SQL and Python transformation applied before the warehouse','Platform vs. SQL recommendation for each','Mapped every column to the right dimension or metric for 5–6 platforms','Campaign taxonomy kept at zero unmapped'],p:['etl','tax','xon']},
+  {k:'mod',x:570,h:'Redshift',s:'multi-platform spend model',w:5,t:'Model: what I did',d:['Maintained the multi-platform spend model; built its creative-level redesign','Tiered fee engine on window functions','Cost actualisation · hourly time-zone view · 4-5-4 fiscal calendar','A team stored procedure saving ~500 hours a year'],p:['pda','fee','mca','hr','fc','sp']},
+  {k:'vis',x:730,h:'Tableau',s:'Built · rebuilt · repaired',w:4,t:'Visualise: what I did',d:['Dashboards end to end, or rebuilt on a new data source','20–30 calculated fields traced to a root cause in 2 days','Custom scorecards and a fiscal vs. calendar date switch'],p:['rsc','cj','sc','inv','aud']},
+  {k:'chk',x:890,h:'QA + AI',s:'Exact match · ~4 hrs → ~40 min',w:4,t:'Check: what I did',d:['Exact-match QA three times a week, every metric','Reconciliation views before a tool migration and for automated actuals','AI-assisted QA: ~4 hrs → ~40 min per run'],p:['rsc','pskm','mig','val','brq']}
+ ],
+ src:[['Search',5],['Social',5],['Programmatic',6],['Affiliate',1],['Web analytics',1],['Vendor API',1],['Spreadsheets',1]],
+ cols:['Sources','Ingest','Transform','Model','Visualise','Check'],
+ rows:[
+  ['SQL (Redshift)',100,[1,1,2,3,2,3],[['pda'],['pq'],['etl','tax'],['pda','fee','mca','hr','sp'],['rsc','cj'],['mig','val','rsc']]],
+  ['Tableau',88,[0,0,1,2,3,3],[[],[],['sc'],['fc','sc','cj'],['rsc','cj','sc','inv','aud'],['pskm','rsc','sc']]],
+  ['Adverity',85,[1,3,3,0,0,0],[['xon'],['adv','xon','fee'],['etl','tax'],[],[],[]]],
+  ['Excel',78,[2,1,2,3,1,2],[['bp'],['fee'],['fee','adv'],['fc','fee'],['fc'],['adv','bp']]],
+  ['Power Automate',74,[2,3,2,0,0,0],[['fee'],['fee'],['fee'],[],[],[]]],
+  ['Web analytics',74,[3,1,0,1,1,2],[['rsc','hr','inv'],['hr'],[],['hr'],['inv'],['mig','val']]],
+  ['AI assistants',74,[0,0,2,2,1,3],[[],[],['pskm','etl'],['pda','fee'],['pskm'],['pskm','rsc']]],
+  ['Python (pandas)',68,[0,2,3,0,0,2],[[],['pq','py'],['etl','py'],[],[],['py']]],
+  ['APIs + S3',48,[2,2,0,0,0,0],[['fee'],['fee','pq'],[],[],[],[]]]
+ ],
+ md:[
+  {k:'src',h:'Platform feeds',s:'search · social · DSPs · ad server',d:'Each platform lands in its own table, with its own column names.',c:"-- one table per platform\nsearch_a_daily, social_b_daily, dsp_c_daily ...",m:'Maintained'},
+  {k:'uni',h:'One schema',s:'UNION ALL',d:'Every platform is reshaped to the same columns in the same order, then stacked.',c:"SELECT 'search_a' AS platform, date, campaign, SUM(cost)\nFROM search_a_daily GROUP BY 1, 2, 3\nUNION ALL ...",m:'Maintained'},
+  {k:'dd',h:'De-duplicate',s:'count every impression once',d:'<b>Why:</b> a programmatic buy is recorded twice: once in the buying platform (the DSP) that bought it, and again in the ad server that delivered it. Added together, spend and impressions would double.</p><p><b>How:</b> each ad-server placement is matched to the buying platforms by placement ID and date (by campaign name where a platform has no ID). Matches are tagged <i>DSP–ad server match</i> and counted only from the buying platform; the rest stay as <i>ad server only</i>. Each platform’s quirks get their own rule, for example which metrics one network keeps.</p><p><b>Result:</b> one honest total across every platform, with every row showing where its numbers came from.',c:"CASE WHEN a.placement_id = d.placement_id\n      AND a.date = d.date\n     THEN 'dsp_adserver_match'\n     ELSE 'adserver_only' END AS source_tag,\n\nSUM(CASE WHEN source_tag = 'dsp_adserver_match'\n         THEN 0            -- counted in the DSP\n         ELSE media_cost END) AS cost",m:'Maintained'},
+  {k:'fx',h:'Currency',s:'fiscal-year rates',d:'Non-US spend is converted at the rate for its fiscal year, not today’s.',c:"CASE WHEN market = 'ca' AND date < '2025-02-02'\n     THEN cost * rate_fy24\n     WHEN market = 'ca' THEN cost * rate_fy25\n     ELSE cost END AS cost_usd",m:'Maintained'},
+  {k:'jn',h:'Taxonomy + calendar',s:'two lookup joins',d:'Every campaign gets its brand, channel, funnel and tactic; every date gets its fiscal week, month and year.',c:"LEFT JOIN taxonomy t\n  ON LOWER(campaign) = LOWER(t.campaign)\nLEFT JOIN fiscal_calendar f\n  ON date = f.date",m:'Maintained'},
+  {k:'fee',h:'Fee layers',s:'verification · serving',d:'Ad verification and ad serving fees per thousand impressions, by country and channel, plus market-specific fees.',c:"impressions / 1000.0\n  * rate_by_country_and_channel AS ad_serving_fees",m:'Maintained'},
+  {k:'eng',h:'+ Fee engine',s:'my tiered fee rows',d:'My fee engine’s daily, per-brand rows are added as their own cost line: tiered bands on a running monthly total, turned into daily figures and split by brand.',c:"UNION ALL\nSELECT 'vendor_fees' AS platform, date, brand, cost\nFROM daily_brand_fees",m:'Built by me',p:'fee'},
+  {k:'out',h:'Spend model',s:'→ Tableau and QA',d:'One trusted table behind the account’s reporting. I also built a redesign at ad and creative level.',c:"-- the account’s core spend model\n-- redesign: ad and creative level",m:'Sole maintainer',p:'pda'}
+ ]
+};
+
+const TXP=[
+ {k:'dup',h:'How much did we really spend on ads, and on which platform?',s:[1,0,1,1,0,1],tools:'SQL · Redshift',how:[
+  ['Same impression in two systems','Tag matches by placement ID and date; count the cost once from the buying platform'],
+  ['Differently named feeds','UNION ALL into one schema, one block per platform'],
+  ['Spend in other currencies','CASE on market and date for fiscal-year FX rates'],
+  ['Package costs with no placement view','Window SUM for share of impressions × planned cost, capped with LEAST()'],
+  ['Unmapped campaigns','Taxonomy lookup join, plus a twice-weekly unmapped check']],p:['pda','mca','tax']},
+ {k:'pace',h:'Are we overspending our ad budget, and will we know in time to fix it?',s:[1,1,0,1,1,1],tools:'SQL · Excel · Tableau',how:[
+  ['Weekly goals, daily spend','Weekly goals × daily split ratios = daily targets, stacked against actuals'],
+  ['Goals that wouldn’t reconcile','Goal files vs. warehouse vs. dashboard, compared step by step'],
+  ['Months vs. fiscal weeks','An Excel formula generates the 4-5-4 calendar; Tableau switches fiscal and normal dates'],
+  ['Unchecked automated actuals','Reused the automation’s bucket rules against the raw analytics data']],p:['bp','brq','fc','val']},
+ {k:'trust',h:'Can we trust the numbers in our reports?',s:[0,0,0,1,1,1],tools:'SQL · Tableau · AI',how:[
+  ['Wrong KPIs in a client dashboard','Isolated discrepancies by segment and metric in undocumented production SQL'],
+  ['Wrong period-to-date figures','Traced 20–30 calculated fields; anchored them to the latest data date, not today'],
+  ['No standard check','A SQL comparison query: every metric, exact match, 3× a week'],
+  ['Risky tool migration','FULL OUTER JOIN side by side, by funnel, channel and tactic']],p:['pskm','sc','rsc','mig']},
+ {k:'fast',h:'How quickly can we see what’s happening, and react?',s:[1,1,0,1,0,0],tools:'SQL · Power Automate · AWS',how:[
+  ['Daily data on mixed clocks','Intraday + yesterday UNION; Japan hours shifted with MOD(hour + 10, 24), early hours rolled back a day'],
+  ['Vendor data by hand','Power Automate: HTTP request → parse JSON → CSV → load, every morning'],
+  ['Connector failures','Bulk UNLOAD and COPY through cloud storage; large Parquet files filtered first'],
+  ['One-off requests','Custom pulls from SQL views; backfills from the platform or the connector']],p:['hr','fee','pq','adh']},
+ {k:'ai',h:'How much of our analysts’ time goes on repetitive manual work?',s:[0,1,0,1,0,1],tools:'AI · SQL · Power Automate · Python',how:[
+  ['Manual dashboard QA','A primed AI assistant compares the dashboard with the source and reports gaps'],
+  ['Manual SQL-vs-dashboard check','AI compares SQL output with the dashboard: ~30 → ~5 min'],
+  ['Fees by hand','Running month-to-date (window SUM), tiered bands (LEAST / GREATEST), LAG to daily'],
+  ['Recurring BAU process','A stored procedure in place of manual steps (team effort)'],
+  ['Multi-file exports','pandas: stack and clean short-window exports (in progress)']],p:['pskm','rsc','fee','sp','py']},
+ {k:'roi',h:'Which ads are actually bringing in sales?',s:[1,0,1,1,1,0],tools:'SQL · Tableau · Web analytics',how:[
+  ['Unclear campaign-type split','Campaigns tagged from naming conventions; joined to site outcomes; ROAS, CPC, CTR, CVR'],
+  ['No audience view','3 social platforms unioned; placement names parsed into audience fields'],
+  ['Social spend vs. site results','Data source replaced; dashboard rebuilt with 6 pivots and ~30 date options'],
+  ['No site data for investment teams','Analytics layout replicated in Tableau: 4 tabs, ~15 brand-markets']],p:['rsc','aud','cj','inv']},
+ {k:'gov',h:'Is our data organised, owned and safe to grow?',s:[1,1,1,0,0,1],tools:'Adverity · SQL · Excel',how:[
+  ['Connectors piling up, no rules','Vendor metadata into the warehouse; keep / delete / review with linked drop-downs'],
+  ['Undocumented transformations','Every SQL and Python rule classified; platform vs. SQL recommended for each'],
+  ['Objects nobody owned','Tables and views matched to their creators; reviewed with each owner'],
+  ['Untracked issues and scattered docs','One issue log; SQL, SOP, QA and checklist for every process'],
+  ['Another account’s platforms','Columns mapped to dimensions and metrics for 5–6 platforms']],p:['adv','etl','rsx','iss','aud2','xon']},
+ {k:'team',h:'How fast can a new team member start contributing?',s:[0,1,0,1,0,1],tools:'Process · SQL',how:[
+  ['Access stalled 1.5 years','An access matrix per platform and role, plus the contact list'],
+  ['Knowledge with one person','KT sessions; SOPs written by the team; checklists'],
+  ['No account-wide view','A weekly status: done, in progress, planned, on hold'],
+  ['A model needing an owner','Sole maintainer; wrote the creative-level redesign']],p:['acc','pskm','wk','pda']}
+];
+let txP='dup';
+function txProbs(){
+  const cols=['Sources','Ingest','Transform','Model','Visualise','Check'];
+  const tbl=`<table class="skm pbm"><thead><tr><th></th>${cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${TXP.map((x,i)=>`<tr class="pr${x.k===txP?' on':''}" data-pk="${x.k}" tabindex="0"><th class="r"><span class="pn">${String(i+1).padStart(2,'0')}</span>${x.h}</th>${x.s.map(v=>`<td class="${v?'k3':'k0'}">${v?'●':''}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+  const x=TXP.find(y=>y.k===txP);
+  return [`<div class="ch"><div><div class="txk">The 8 challenges, technically</div><h2>Where in the pipeline each challenge was solved</h2></div><span class="txhint">Click a challenge to see how it was solved.</span></div><div class="skw">${tbl}</div>`,
+   `<div class="lab">Inspector · ${x.tools}</div><h3>${x.h}</h3>${x.how.map(([a,b])=>`<div class="hw"><b>${a}</b><span>${b}</span></div>`).join('')}<div class="lab">Projects</div><div class="chips">${x.p.map(och).join('')}</div>`];
+}
+let txMode='probs',txSel={pipe:'mod',skills:{r:0,c:3},model:'dd'},tlModal=null,tlMTab='logic';
+const och=id=>{const p=byId(id);return p?`<button type="button" class="ochip" data-op="${id}">${p.name}</button>`:'';};
+const escx=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+function txPipe(){
+  const S=TX.st,cy=260;let y=48,dots='',paths='',pts='',n=0;
+  TX.src.forEach(([l,c])=>{dots+=`<text class="tsrcl" x="18" y="${y+4}">${l}</text>`;for(let i=0;i<c;i++)dots+=`<circle class="tdot" cx="${118+i*11}" cy="${y}" r="4"/>`;
+    const id='tp'+n;paths+=`<path id="${id}" class="tpipe" stroke-width="${1.5+c*.8}" d="M${118+(c-1)*11+6},${y} C 190,${y} 180,${cy} ${S[0].x-62},${cy}"/>`;
+    pts+=`<circle class="tpt" r="3"><animateMotion dur="${2.4+n*.3}s" repeatCount="indefinite" begin="-${n*.37}s"><mpath href="#${id}"/></animateMotion></circle>`;n++;y+=62;});
+  let chain='';S.forEach((s,i)=>{if(i<S.length-1){const id='tq'+i;chain+=`<path id="${id}" class="tpipe" stroke-width="7" d="M${s.x+62},${cy} L${S[i+1].x-62},${cy}"/>`;
+    pts+=`<circle class="tpt" r="4"><animateMotion dur="1.6s" repeatCount="indefinite" begin="-${i*.4}s"><mpath href="#${id}"/></animateMotion></circle>`;}});
+  const nodes=S.map(s=>`<g class="tnd${s.k===txSel.pipe?' on':''}" data-k="${s.k}" tabindex="0" role="button" aria-label="${s.h}"><rect x="${s.x-62}" y="${cy-48}" width="124" height="96" rx="16"/><text class="t1" x="${s.x}" y="${cy-6}" text-anchor="middle" font-size="17">${s.h}</text><text class="t2" x="${s.x}" y="${cy+16}" text-anchor="middle" font-size="11">${s.s.length>22?s.s.slice(0,21)+'…':s.s}</text></g>`).join('');
+  const bars=`<g transform="translate(0,${cy+96})"><text class="tsrcl" x="${S[0].x-62}" y="0">How much of my work sits at each stage</text>${S.map(s=>`<rect x="${s.x-40}" y="12" width="80" height="10" rx="5" fill="var(--line)"/><rect x="${s.x-40}" y="12" width="${s.w*16}" height="10" rx="5" fill="var(--accent)"/>`).join('')}</g>`;
+  const s=S.find(x=>x.k===txSel.pipe);
+  return [`<div class="ch"><div><div class="txk">Live pipeline</div><h2>Where I worked in the data flow</h2></div><span class="txhint">Every source in, trusted numbers out. Click a stage.</span></div>
+   <div class="txsvg"><svg viewBox="0 0 980 470" role="img" aria-label="Data pipeline from every source through ingest, transform, Redshift, Tableau and QA">${paths}${chain}${dots}${nodes}${bars}${pts}</svg></div>`,
+   `<div class="lab">Inspector</div><h3>${s.t}</h3><ul>${s.d.map(d=>`<li>${d}</li>`).join('')}</ul><div class="lab">Projects</div><div class="chips">${s.p.map(och).join('')}</div><p class="txhint">No client names, code or internal data appear on this page.</p>`];
+}
+function txSkills(){
+  const LW=['','light','solid','deep'],sel=txSel.skills;
+  const tbl=`<table class="skm"><thead><tr><th></th>${TX.cols.map(c=>`<th>${c}</th>`).join('')}<th class="tt">Overall</th></tr></thead><tbody>${TX.rows.map(([n,o,v],r)=>`<tr><th class="r">${n}</th>${v.map((x,c)=>`<td class="k${x}${sel.r===r&&sel.c===c?' on':''}" data-r="${r}" data-c="${c}" tabindex="0">${x?LW[x]:''}</td>`).join('')}<td class="tot"><span style="width:${o}%"></span></td></tr>`).join('')}</tbody></table>`;
+  const [n,,v,p]=TX.rows[sel.r],x=v[sel.c],ps=p[sel.c];
+  let h=`<div class="lab">Inspector</div><h3>${n} × ${TX.cols[sel.c]}</h3><p>Depth: <b>${x?LW[x]:'not used here'}</b>.</p>`;
+  if(n.startsWith('Python'))h+=`<p>Cleaning, reshaping and checking data with pandas; reading and documenting Python transformation logic.</p>`;
+  if(ps.length)h+=`<div class="lab">Proof</div><div class="chips">${ps.map(och).join('')}</div>`;
+  return [`<div class="ch"><div><div class="txk">Skills map</div><h2>Every tool, at every stage</h2></div><span class="txhint">Darker = deeper. Click a cell for the proof.</span></div>
+   <div class="skw">${tbl}<div class="skleg"><span><i class="k1"></i>light</span><span><i class="k2"></i>solid</span><span><i class="k3"></i>deep</span></div></div>`,h];
+}
+function txModel(){
+  const M=TX.md,pos=[[200,110],[420,110],[640,110],[860,110],[860,300],[640,300],[420,300],[200,300]],nw=170,nh=104;let g='',lk='';
+  M.forEach((n,i)=>{const [x,y]=pos[i];
+    if(i<M.length-1){const [x2,y2]=pos[i+1];const d=y===y2?(x2>x?`M${x+nw/2},${y} L${x2-nw/2},${y2}`:`M${x-nw/2},${y} L${x2+nw/2},${y2}`):`M${x},${y+nh/2} L${x2},${y2-nh/2}`;
+      lk+=`<path id="tm${i}" d="${d}" stroke="var(--accent)" stroke-width="6" opacity=".25" fill="none"/><circle class="tpt" r="4"><animateMotion dur="1.3s" repeatCount="indefinite" begin="-${i*.25}s"><mpath href="#tm${i}"/></animateMotion></circle>`;}
+    const mine=n.m!=='Maintained';
+    g+=`<g class="tnd${txSel.model===n.k?' on':''}" data-k="${n.k}" tabindex="0" role="button" aria-label="${n.h}"><rect x="${x-nw/2}" y="${y-nh/2}" width="${nw}" height="${nh}" rx="16" ${mine?'style="stroke:var(--pace);stroke-width:2.5"':''}/>
+      <text x="${x-nw/2+14}" y="${y-nh/2+22}" font-family="var(--mono)" font-size="11" fill="var(--accent)">${String(i+1).padStart(2,'0')}</text>
+      <text class="t1" x="${x}" y="${y+2}" text-anchor="middle" font-size="18">${n.h}</text><text class="t2" x="${x}" y="${y+24}" text-anchor="middle" font-size="11.5">${n.s}</text>
+      <text x="${x}" y="${y+nh/2-8}" text-anchor="middle" font-size="10" font-family="var(--mono)" fill="${mine?'var(--pace)':'var(--muted)'}">${n.m.toLowerCase()}</text></g>`;});
+  let fan='';for(let k=0;k<18;k++){const yy=40+k*8;fan+=`<circle cx="40" cy="${yy}" r="3" fill="var(--accent)"/><path d="M43,${yy} C 80,${yy} 80,110 ${200-nw/2},110" fill="none" stroke="var(--accent)" opacity=".18"/>`;}
+  const n=M.find(x=>x.k===txSel.model);
+  return [`<div class="ch"><div><div class="txk">Inside the model</div><h2>What happens inside the spend model</h2></div><span class="txhint">Every step is SQL. Click one for the logic.</span></div>
+   <div class="txsvg"><svg viewBox="0 0 980 400" role="img" aria-label="Eight steps inside the spend model">${fan}<text x="22" y="200" font-size="10.5" fill="var(--muted)">all feeds</text>${lk}${g}<text x="${200-nw/2}" y="390" font-size="11.5" fill="var(--muted)">Orange outline = built by me. The rest I maintained as sole owner, after building it with the team.</text></svg></div>`,
+   `<div class="lab">Inspector · step ${M.indexOf(n)+1} of ${M.length}</div><h3>${n.h}</h3><p>${n.d}</p><div class="lab">The core of the SQL</div><pre>${escx(n.c)}</pre><div class="lab">My part</div><p><b>${n.m}</b></p>${n.p?`<div class="chips">${och(n.p)}</div>`:`<div class="chips">${och('pda')}</div>`}<p class="txhint">Code rewritten with generic names.</p>`];
+}
+function tlModalHTML(){
+  const p=byId(tlModal);if(!p)return '';
+  const tools=Object.entries(p.tools).map(([k,v])=>`<span>${k}<span class="bars">${[1,2,3].map(i=>`<i class="${i<=v?'f':''}"></i>`).join('')}</span></span>`).join('');
+  return `<div class="tlm" id="tlm"><div class="tlmc" role="dialog" aria-modal="true" aria-label="${p.name}"><div class="mh"><h3>${p.name}</h3><button type="button" class="x" id="tlx">Close</button></div>
+    <div class="meta"><span class="lvl">${slope(p.g)}${GRADES[p.g]}</span><span class="steps">${steps(p)}</span></div>
+    <div class="hardl">${p.hard.map(h=>`<span>${h}</span>`).join('')}</div>
+    <div class="tabs" role="tablist">${TABS.filter(([k])=>k!=='summary').map(([k,l])=>`<button type="button" role="tab" class="tab mtab2" data-t="${k}" aria-selected="${k===tlMTab}">${l}</button>`).join('')}</div>
+    <div class="tbody">${body(p,tlMTab)}</div>${tools?`<div class="tools">${tools}</div>`:''}</div></div>`;
+}
+function fitStage(){
+  const s=document.querySelector('.txstage');if(!s)return;
+  if(window.innerWidth<=900){s.style.height='';return;}
+  s.style.height=Math.max(440,window.innerHeight-s.getBoundingClientRect().top-window.scrollY-18)+'px';
+}
+window.addEventListener('resize',()=>{if(lens==='tech')fitStage();});
+function renderTL(){
+  const pg=$('#page');pg.classList.remove('hm','rcp');pg.classList.add('tl');
+  let stage;
+  if(txMode==='fit')stage=fitHTML();
+  else{const [c,i]=({probs:txProbs,pipe:txPipe,skills:txSkills,model:txModel})[txMode]();stage=`<div class="txstage"><section class="txc">${c}</section><aside class="txi" aria-live="polite">${i}</aside></div>`;}
+  $('#main').innerHTML=`<div class="txw"><header class="txh"><div><button type="button" class="homebtn" id="tlchg" title="Back to the home page (Esc)">← Home</button><div class="txq"><button type="button" class="home" id="tlhome">SELECT * FROM ahmed</button><span>WHERE visitor = '<b>tech_lead</b>';</span></div>
+      <h1>How the outcomes were built: the pipeline, the skills, and the SQL inside.</h1><div class="txstats">${TX.stats.map(([b,s])=>`<span><b>${b}</b> ${s}</span>`).join('')}</div>
+      <div class="txsw" role="group" aria-label="View">${TX.modes.map(([k,l])=>`<button type="button" data-tm="${k}" aria-pressed="${k===txMode}">${l}</button>`).join('')}</div></div>
+      <div class="cgroup tx"><button type="button" class="txbtn" id="tlres">Resume (PDF)</button><div class="clinks"><a href="mailto:ahmedhusain904@gmail.com?subject=Your%20portfolio" title="ahmedhusain904@gmail.com">✉ Email</a><a href="https://www.linkedin.com/in/ahmed-husain-9b55601b5" target="_blank" rel="noopener">in LinkedIn</a></div></div></header>
+    ${stage}${txMode==='fit'?'<p class="foot">No client names, code or internal data appear on this page.</p>':''}</div>${tlModalHTML()}`;
+  $('#tlhome').onclick=()=>goHome();$('#tlchg').onclick=()=>goHome();
+  $('#tlres').onclick=getResume;
+  document.querySelectorAll('[data-tm]').forEach(b=>b.onclick=()=>{txMode=b.dataset.tm;renderTL();});
+  const act=(el,fn)=>{el.onclick=fn;el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fn();}};};
+  document.querySelectorAll('.tnd').forEach(g=>act(g,()=>{const k=g.dataset.k;if(txMode==='pipe')txSel.pipe=k;else txSel.model=k;renderTL();const n=document.querySelector(`.tnd[data-k="${k}"]`);if(n)n.focus({preventScroll:true});}));
+  document.querySelectorAll('.skm td[data-r]').forEach(td=>act(td,()=>{txSel.skills={r:+td.dataset.r,c:+td.dataset.c};renderTL();const n=document.querySelector(`.skm td[data-r="${td.dataset.r}"][data-c="${td.dataset.c}"]`);if(n)n.focus({preventScroll:true});}));
+  document.querySelectorAll('.pbm tr[data-pk]').forEach(tr=>act(tr,()=>{txP=tr.dataset.pk;renderTL();const n=document.querySelector(`.pbm tr[data-pk="${txP}"]`);if(n)n.focus({preventScroll:true});}));
+  document.querySelectorAll('[data-op]').forEach(b=>b.onclick=()=>{tlModal=b.dataset.op;tlMTab='logic';renderTL();const x=$('#tlx');if(x)x.focus();});
+  if(tlModal){
+    const close=()=>{const id=tlModal;tlModal=null;renderTL();const b=document.querySelector(`[data-op="${id}"]`);if(b)b.focus({preventScroll:true});};
+    $('#tlx').onclick=close;$('#tlm').onclick=e=>{if(e.target.id==='tlm')close();};
+    document.querySelectorAll('.mtab2').forEach(b=>b.onclick=()=>{tlMTab=b.dataset.t;renderTL();const x=$('#tlx');if(x)x.focus({preventScroll:true});});
+    document.onkeydown=e=>{if(e.key==='Escape'&&tlModal)close();};
+  }
+  if(txMode==='fit')bindFit();
+  fitStage();
+}
+
+
+/* ================= RECRUITER: screening page ================= */
+function renderREC(){
+  const pg=$('#page');pg.classList.remove('hm','tl');pg.classList.add('rcp');
+  $('#main').innerHTML=`<div class="rcx"><div class="rc-top"><button type="button" class="homebtn" id="rcchg" title="Back to the home page (Esc)">← Home</button></div><header class="rc-hero">
+ <div>
+  <div class="rc-q">SELECT * FROM ahmed WHERE visitor = '<b>recruiter</b>';</div>
+  <h1>Ahmed Husain</h1>
+  <p class="rc-role">Lead Analyst · Marketing &amp; Media Analytics</p>
+  <p class="rc-line">I turn data from every ad platform into numbers teams trust, and automate the work around it with SQL, Power Automate and AI.</p>
+  <div class="rc-pills"><span><b>9+ yrs</b> experience</span><span><b>Led</b> a team of 3</span><span><b>AI</b> automation</span><span>Bangalore, India</span><span>Open to <b>AM · Manager · Lead</b></span></div>
+ </div>
+ <aside class="rc-scan" aria-label="Screening summary">
+  <div class="rc-h"><span>Resume screen</span><span id="rc_cnt">0 / 6</span></div>
+  <div class="rc-prog"><i id="rc_bar"></i></div>
+  <ol id="rc_steps"><li><i>✓</i>Experience</li><li><i>✓</i>Team leadership</li><li><i>✓</i>AI at work</li><li><i>✓</i>Domain</li><li><i>✓</i>Stakeholders</li><li><i>✓</i>Tool stack</li></ol>
+  <div class="rc-stamp" id="rc_stamp">SHORTLIST</div>
+  <button class="rc-replay" id="rc_replay" style="margin-top:44px">Run the screen again</button>
+ </aside>
+</header>
+
+<div class="rc-sh"><span class="rc-n">01</span><h2>Screening checklist</h2><p>The six things you check first.</p></div>
+<section class="rc-checks">
+ <div class="rc-ck"><div class="rc-qq"><span>Years of experience?</span><span>✓</span></div><div class="rc-big">9+<small>years</small></div>
+  <div class="rc-yr"><i style="background:var(--line)"></i><i style="background:var(--line)"></i><i style="background:var(--line)"></i><i style="background:var(--line)"></i><i style="background:var(--accent)"></i><i style="background:var(--accent)"></i><i style="background:var(--accent)"></i><i style="background:var(--pace)"></i><i style="background:var(--pace)"></i></div>
+  <div class="rc-yl"><em style="--c:var(--line)">business &amp; ops</em><em style="--c:var(--accent)">data analytics</em><em style="--c:var(--pace)">digital marketing analytics</em></div></div>
+ <div class="rc-ck"><div class="rc-qq"><span>Has he led a team?</span><span>✓</span></div><div class="rc-big">Yes<small>team of 3</small></div>
+  <div class="rc-ppl"><span class="rc-lead">AH</span><span class="rc-tm"></span><span class="rc-tm"></span><span class="rc-tm"></span></div>
+  <p>Scoped their work, ran KT, set yearly goals, handed over processes they now run.</p></div>
+ <div class="rc-ck"><div class="rc-qq"><span>Does he use AI?</span><span>✓</span></div><div class="rc-big">Yes<small>to automate QA</small></div>
+  <div class="rc-ba"><s>~4 hrs</s><span class="rc-ar">→</span><span class="rc-big" style="font-size:24px">~40 min</span></div>
+  <p>Per QA run, with a primed AI assistant. Another check: ~30 → ~5 min.</p></div>
+ <div class="rc-ck"><div class="rc-qq"><span>Which domain?</span><span>✓</span></div><div class="rc-big" style="font-size:24px">Marketing &amp; media analytics</div>
+  <div class="rc-tags"><span>Paid search</span><span>Social</span><span>Programmatic</span><span>Affiliate</span><span>Web analytics</span><span>Retail</span></div></div>
+ <div class="rc-ck"><div class="rc-qq"><span>Who has he worked with?</span><span>✓</span></div><div class="rc-big" style="font-size:24px">US teams · leadership · client</div>
+  <p>Weekly status to senior leadership; daily work with US data and marketing science teams.</p></div>
+ <div class="rc-ck"><div class="rc-qq"><span>Core tools?</span><span>✓</span></div><div class="rc-big" style="font-size:24px">SQL · Tableau · Python</div>
+  <div class="rc-orb"><span>Adverity</span><span>Power Automate</span><span>Excel</span><span>Adobe Analytics</span><span>AI (Copilot)</span><span>AWS</span></div></div>
+</section>
+
+<div class="rc-sh"><span class="rc-n">02</span><h2>Tools, and how well</h2><p>Full ring = expert.</p></div>
+<section class="rc-tools" id="rc_tools"></section>
+
+<div class="rc-sh"><span class="rc-n">03</span><h2>Biggest wins</h2><p>In the order I’d tell them.</p></div>
+<section class="rc-wins">
+ <article class="rc-w"><span class="rc-rk">1</span><span class="rc-tg">Out-of-the-box</span><h3>Connected a vendor API with Power Automate</h3><p>Outside the account’s toolset: read the API spec, built the flows, rebuilt the Excel fee logic in SQL. Fees now calculate themselves every day.</p><span class="rc-num">Manual → automatic</span></article>
+ <article class="rc-w"><span class="rc-rk">2</span><span class="rc-tg">AI automation</span><h3>Automated dashboard QA with AI</h3><p>A primed AI workflow that checks dashboards against the source.</p><span class="rc-num">~4 hrs → ~40 min</span></article>
+ <article class="rc-w"><span class="rc-rk">3</span><span class="rc-tg">Team effort</span><h3>Automated BAU work with a stored procedure</h3><p>Built with teammates; I know it end to end.</p><span class="rc-num">~500 hrs / year</span></article>
+ <article class="rc-w"><span class="rc-rk">4</span><span class="rc-tg">Governance</span><h3>Brought data connectors under rules</h3><p>Keep / delete / review with owner sign-off, plus every transformation documented.</p><span class="rc-num">~60% redundancy cut</span></article>
+</section>
+
+<section class="rc-contact"><div><h2>Let’s talk</h2><p>Full resume, LinkedIn, or email me at ahmedhusain904@gmail.com</p></div>
+ <div class="rc-cbtn"><button class="rc-p">Download resume (PDF)</button><button>Connect on LinkedIn</button><a class="rc-mail" href="mailto:ahmedhusain904@gmail.com?subject=Your%20portfolio">Email me</a></div></section>
+</div>`;
+  $('#rcchg').onclick=()=>goHome();
+  document.querySelectorAll('.rc-cbtn button').forEach(b=>b.onclick=/LinkedIn/.test(b.textContent)?openLinkedIn:getResume);
+
+const T=[['SQL (Redshift)',100,'Expert'],['Tableau',88,'Advanced'],['Adverity (ETL)',85,'Advanced'],['Excel',80,'Advanced'],['Power Automate',78,'Advanced'],['Python (pandas)',74,'Advanced'],['AI (Copilot)',76,'Advanced'],['Adobe Analytics',74,'Advanced'],['AWS (S3)',50,'Working']];
+const C=2*Math.PI*30;
+document.getElementById('rc_tools').innerHTML=T.map(([n,v,l])=>`<div class="rc-g"><svg viewBox="0 0 78 78" aria-hidden="true"><circle cx="39" cy="39" r="30" fill="none" stroke="var(--line)" stroke-width="8"/><circle cx="39" cy="39" r="30" fill="none" stroke="var(--accent)" stroke-width="8" stroke-linecap="round" stroke-dasharray="${C*v/100} ${C}" transform="rotate(-90 39 39)"/><text x="39" y="44" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="15" fill="var(--ink)">${v}</text></svg><b>${n}</b><span class="${l==='Expert'?'ex':''}">${l}</span></div>`).join('');
+const li=[...document.querySelectorAll('#rc_steps li')],bar=document.getElementById('rc_bar'),cnt=document.getElementById('rc_cnt'),st=document.getElementById('rc_stamp');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function run(){li.forEach(l=>l.classList.remove('rc-ok'));st.classList.remove('rc-on');bar.style.width='0';cnt.textContent='0 / 6';
+ if(reduce){li.forEach(l=>l.classList.add('rc-ok'));bar.style.width='100%';cnt.textContent='6 / 6';st.classList.add('rc-on');return;}
+ li.forEach((l,i)=>setTimeout(()=>{l.classList.add('rc-ok');bar.style.width=((i+1)/6*100)+'%';cnt.textContent=(i+1)+' / 6';if(i===5)setTimeout(()=>st.classList.add('rc-on'),350);},400+i*380));}
+document.getElementById('rc_replay').onclick=run;run();
+
+}
+
+/* ---------- mobile top bar ---------- */
+const SHORT={dup:'Spend',pace:'Pacing',trust:'Trust',fast:'Speed',ai:'AI',roi:'ROI',gov:'Governance',team:'Team'};
+function mbar(){
+  const isHM=lens==='hm';
+  const items=isHM?[['','All topics'],...HM.map(y=>[y.k,y.h])]:PAGES[lens].qs.map((q,i)=>['q'+i,q.h]);
+  $('#mbar').innerHTML=`<div class="mtop"><button type="button" class="mhome" id="mhome">SELECT * FROM ahmed</button><div class="mact"><button type="button" class="mbtn" id="mtopics" aria-expanded="false">${isHM?'Topics':'Jump to'} ▾</button><button type="button" class="mbtn dark" id="mres">Resume</button></div></div>
+    <div class="mmenu" id="mmenu" hidden>${items.map(([k,l])=>`<button type="button" data-m="${k}">${l}</button>`).join('')}<div class="mcl"><div class="clinks"><a href="mailto:ahmedhusain904@gmail.com?subject=Your%20portfolio" title="ahmedhusain904@gmail.com">✉ Email</a><a href="https://www.linkedin.com/in/ahmed-husain-9b55601b5" target="_blank" rel="noopener">in LinkedIn</a></div></div><button type="button" data-m="__change" class="mchg">← Change visitor</button></div>
+    ${isHM?`<div class="mchips" id="mchips">${HM.map(y=>`<button type="button" class="mchip${hmView===y.k?' on':''}" data-m="${y.k}">${SHORT[y.k]}</button>`).join('')}</div>`:''}`;
+  $('#mhome').onclick=()=>goHome();
+  $('#mtopics').onclick=()=>{const m=$('#mmenu');m.hidden=!m.hidden;$('#mtopics').setAttribute('aria-expanded',String(!m.hidden));};
+  $('#mres').onclick=getResume;
+  document.querySelectorAll('#mbar [data-m]').forEach(b=>b.onclick=()=>{
+    const k=b.dataset.m;
+    if(k==='__change')return goHome();
+    if(isHM){hmView=k||null;openProof=null;mobTab='answer';render();window.scrollTo(0,0);return;}
+    $('#mmenu').hidden=true;const el=document.getElementById(k);if(el){const y=el.getBoundingClientRect().top+window.scrollY-($('#mbar').offsetHeight+8);window.scrollTo({top:y,behavior:'smooth'});}
+  });
+  const ch=$('#mchips'),on=ch&&ch.querySelector('.on');if(ch&&on)ch.scrollLeft=on.offsetLeft-ch.clientWidth/2+on.clientWidth/2;
+}
+
+/* ---------- navigation ---------- */
+function enter(l,fromHist){lens=l;openKey=null;tab=null;hmView=null;tlModal=null;txMode='probs';$('#landing').hidden=true;$('#page').hidden=false;render();window.scrollTo(0,0);
+  if(!fromHist){try{history.pushState({lens:l},'','#'+l);}catch(e){}}}
+function goHome(fromHist){tlModal=null;$('#page').hidden=true;$('#landing').hidden=false;window.scrollTo(0,0);
+  if(!fromHist&&location.hash){try{history.pushState({},'',location.pathname+location.search);}catch(e){}}}
+window.addEventListener('popstate',()=>{const h=(location.hash||'').slice(1);if(['hm','tech','rec'].includes(h))enter(h,true);else goHome(true);});
+document.addEventListener('keydown',e=>{if(e.key!=='Escape'||$('#page').hidden)return;if(document.getElementById('tlm'))return;const tg=e.target&&e.target.tagName;if(tg==='TEXTAREA'||tg==='INPUT')return;goHome();});
+document.querySelectorAll('.door').forEach(d=>d.onclick=()=>enter(d.dataset.lens));
+$('#home').onclick=()=>goHome();$('#change').onclick=()=>goHome();$('#homeBtn').onclick=()=>goHome();
+$('#resumeBtn').onclick=getResume;
+
+
+function setPal(p){document.documentElement.setAttribute('data-palette',p);document.querySelectorAll('.sw').forEach(s=>s.setAttribute('aria-pressed',String(s.dataset.pal===p)));try{localStorage.setItem('pal',p);}catch(e){}}
+document.querySelectorAll('.sw').forEach(s=>s.onclick=()=>setPal(s.dataset.pal));
+let saved=null;try{saved=localStorage.getItem('pal');}catch(e){}
+if(!saved||!document.querySelector('.sw[data-pal="'+saved+'"]'))saved='ocean';
+setPal(saved);
+})();
+</script>
+
+</html>
