@@ -827,12 +827,12 @@ const P=[
   role:['Collaborated with team members to automate the process with a stored procedure','Understood the procedure end to end, so I could explain and support it'],
   logic:['Take the manual steps the team repeated','Move them into a stored procedure in the warehouse','Let it run instead of doing it by hand'],
   result:'About 500 hours of business-as-usual work saved a year. A team effort.'},
- {id:'hr',name:'Hourly Web Analytics: US Eastern Time Alignment',L:'Pipeline automation',tags:['SQL logic'],g:2,st:'Delivered',
-  s:{build:'o'},tools:{SQL:2,Redshift:2},hard:['Three markets, two clocks','Hours that cross into the previous day'],
-  problem:'The team’s hourly sales view mixed markets on different clocks. Japan’s hours didn’t line up with the US day, so morning checks showed the wrong numbers.',
-  role:['The hourly view was a team build; I added the time-zone logic it was missing','Shifted Japan’s hours onto US Eastern time and moved the early hours back to the previous date'],
-  logic:['Combine today’s intraday hours with yesterday’s full day','Leave US and Canada hours as they are','Shift Japan’s hours forward to US Eastern time','Move hours that fall before midnight Eastern back one day','Convert currency and add the fiscal calendar'],
-  result:'Hourly numbers from every market on one clock, so the US morning check showed the right picture.'},
+ {id:'hr',name:'Black Friday Hourly Reporting: Prototype to Client Dashboards',L:'Pipeline automation',tags:['Requirements & scoping','SQL view build','Dashboard build','Stakeholder management'],g:3,st:'Delivered',
+  s:{req:'o',build:'o',qa:'o'},tools:{SQL:3,Redshift:2,Adverity:2},hard:['Daily data was too slow for peak-sale decisions','Hourly data had never been pulled before','Three markets, two clocks','A 1.5–2 month build, from idea to client dashboards'],
+  problem:'Ad data arrived at daily level while budgets were set weekly, so each morning the team decided whether to move budget based on yesterday’s numbers. On Black Friday, sales volume is far higher and decisions need to be faster, which daily data can’t support.',
+  role:['Worked on it for about 1.5–2 months, from the SQL view to the client dashboards','Worked on the hourly SQL view behind it','Built the prototype with the team, pulling hourly data through the data integration platform','Worked with the agencies to get the hourly data in place','Presented the prototype to the client; it then scaled to multiple hourly dashboards','Added the time-zone logic: shifted Japan’s hours onto US Eastern time and moved early hours back to the previous date'],
+  logic:['Pull hourly data alongside the usual daily data','Combine today’s intraday hours with yesterday’s full day','Leave US and Canada hours as they are; shift Japan’s hours to US Eastern time','Move hours that fall before midnight Eastern back one day','Convert currency and add the fiscal calendar','Feed the hourly dashboards'],
+  result:'On the biggest sales days, budget decisions could be made within the day instead of the next morning. The client found the prototype useful, it grew into multiple hourly dashboards, and it improved how quickly they could act on efficiency metrics.'},
  {id:'pq',name:'Backup Data-Load Route via Cloud Storage',L:'Pipeline automation',tags:['Troubleshooting & RCA'],g:2,st:'Used when needed',
   s:{build:'o',qa:'o'},tools:{Redshift:2,'AWS (S3)':2},hard:['Used only when the standard connector failed','Large files that had to be filtered before loading'],
   problem:'When the standard data connector failed, the data still had to land in the warehouse on time.',
@@ -1129,7 +1129,7 @@ const HM=[
    ['A switch of analytics tools risked broken numbers','The right fields confirmed before the switch','mig']]}},
  {k:'fast',h:'Faster reporting',s:'Hourly',b:'Same-day decisions on near-live data',q:'How quickly can we see what’s happening, and react?',v:'Outcome: reporting closer to live, and it keeps running.',l:'Reporting closer to live, and it keeps running.',
   viz:{type:'ba',hd:['The business challenge','The business outcome'],items:[
-   ['Daily-only data, on mixed clocks','Hourly view, every market on one clock','hr'],
+   ['Black Friday decisions waiting on yesterday’s daily data','Hourly dashboards: budget decisions within the day','hr'],
    ['Vendor data downloaded by hand','Arrives automatically every morning, via API','fee'],
    ['A broken connector stops the reporting','A backup route keeps it running','pq'],
    ['One-off data requests waiting for new dashboards','Custom pulls and backfills, turned around fast','adh']]}},
@@ -1298,7 +1298,7 @@ const TXP=[
   ['No standard check','A SQL comparison query: every metric, exact match, 3× a week'],
   ['Risky tool migration','FULL OUTER JOIN side by side, by funnel, channel and tactic']],p:['pskm','sc','rsc','mig']},
  {k:'fast',h:'How quickly can we see what’s happening, and react?',s:[1,1,0,1,0,0],tools:'SQL · Power Automate · AWS',how:[
-  ['Daily data on mixed clocks','Intraday + yesterday UNION; Japan hours shifted with MOD(hour + 10, 24), early hours rolled back a day'],
+  ['Peak days on daily data','Hourly feed via the connector; intraday + yesterday UNION; Japan hours shifted with MOD(hour + 10, 24), early hours rolled back a day'],
   ['Vendor data by hand','Power Automate: HTTP request → parse JSON → CSV → load, every morning'],
   ['Connector failures','Bulk UNLOAD and COPY through cloud storage; large Parquet files filtered first'],
   ['One-off requests','Custom pulls from SQL views; backfills from the platform or the connector']],p:['hr','fee','pq','adh']},
@@ -1524,6 +1524,29 @@ document.querySelectorAll('.sw').forEach(s=>s.onclick=()=>setPal(s.dataset.pal))
 let saved=null;try{saved=localStorage.getItem('pal');}catch(e){}
 if(!saved||!document.querySelector('.sw[data-pal="'+saved+'"]'))saved='ocean';
 setPal(saved);
+
+/* Visitor analytics: only sends when the hosted page has loaded Google Analytics (window.gtag). */
+(function(){
+  const VIS={hm:'hiring_manager',tech:'tech_lead',rec:'recruiter'};
+  const page=()=>{const h=(location.hash||'').slice(1);return VIS[h]||'landing';};
+  const tk=(name,p)=>{try{if(typeof window.gtag==='function')window.gtag('event',name,Object.assign({page_section:page()},p||{}));}catch(e){}};
+  document.addEventListener('click',e=>{
+    const el=e.target&&e.target.closest?e.target.closest('a,button,[data-op],[data-pk],.card-h'):null;if(!el)return;
+    const txt=(el.textContent||'').trim();
+    if(el.classList.contains('door'))return tk('visitor_type',{visitor:VIS[el.dataset.lens]||el.dataset.lens});
+    if(el.tagName==='A'&&/^mailto:/i.test(el.getAttribute('href')||''))return tk('contact_click',{method:'email'});
+    if((el.tagName==='A'&&/linkedin\.com/i.test(el.href||''))||/LinkedIn/.test(txt))return tk('contact_click',{method:'linkedin'});
+    if(el.id==='resumeBtn'||el.id==='tlres'||el.id==='mres'||/resume/i.test(txt))return tk('resume_download',{});
+    if(el.classList.contains('sw'))return tk('theme_change',{theme:el.dataset.pal});
+    if(el.dataset&&el.dataset.tm)return tk('tech_view',{view:el.dataset.tm});
+    if(el.dataset&&el.dataset.pid)return tk('project_view',{project:el.dataset.pid});
+    if(el.dataset&&el.dataset.op)return tk('project_view',{project:el.dataset.op});
+    if(el.classList.contains('pchip')&&el.dataset.id)return tk('project_view',{project:el.dataset.id});
+    if(el.classList.contains('card-h')){const k=(el.parentElement&&el.parentElement.dataset.key)||'';return tk('project_view',{project:k.split(':').pop()});}
+    if(el.dataset&&el.dataset.pk)return tk('challenge_view',{challenge:el.dataset.pk});
+    if(el.dataset&&el.dataset.v)return tk('challenge_view',{challenge:el.dataset.v});
+  },true);
+})();
 })();
 </script>
 
